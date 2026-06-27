@@ -201,7 +201,7 @@ namespace OnlineShopping.Controllers
                 {
                     CategoryId = category.CategoryId,
                     CategoryName = category.CategoryName,
-                    // map only the fields you need
+                    CategoryImage=category.CategoryImage
                 };
             }
             else
@@ -220,40 +220,54 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UpdateCategory(CategoryDetail cd)
+        public ActionResult UpdateCategory(CategoryDetail cd, HttpPostedFileBase _CategoryImage)
         {
             if (ModelState.IsValid)
             {
-                Tbl_Category cat = _unitOfWork.GetRepositoryInstance<Tbl_Category>().GetFirstOrDefault(cd.CategoryId);
-                cat = cat != null ? cat : new Tbl_Category();
+                Tbl_Category cat = _unitOfWork
+                    .GetRepositoryInstance<Tbl_Category>()
+                    .GetFirstOrDefault(cd.CategoryId);
+
+                cat = cat ?? new Tbl_Category();
+
                 cat.CategoryName = cd.CategoryName;
-                if (cd.CategoryId != 0)
+
+                // Image
+                cat.CategoryImage = _CategoryImage != null
+                                        ? _CategoryImage.FileName
+                                        : cat.CategoryImage;
+
+                if (cd.CategoryId == 0)
+                {
+                    cat.IsActive = true;
+                    cat.IsDelete = false;
+
+                    _unitOfWork.GetRepositoryInstance<Tbl_Category>().Add(cat);
+                }
+                else
                 {
                     _unitOfWork.GetRepositoryInstance<Tbl_Category>().Update(cat);
                     _unitOfWork.SaveChanges();
                 }
-                else
+
+                // Upload Image
+                if (_CategoryImage != null)
                 {
-                    cat.IsActive = true;
-                    cat.IsDelete = false;
-                    _unitOfWork.GetRepositoryInstance<Tbl_Category>().Add(cat);
+                    uc.UploadImage(
+                        _CategoryImage,
+                        cat.CategoryId + "_",
+                        "/Content/CategoryImage/",
+                        Server,
+                        _unitOfWork,
+                        cat.CategoryId,
+                        0,
+                        0);
                 }
 
                 return RedirectToAction("Categories");
             }
-            else
-                return View("UpdateCategory", cd);
-        }
 
-        /// <summary>
-        /// Delete Category
-        /// </summary>
-        /// <param name="itemId"></param>
-        /// <returns></returns>
-        public int DeleteCategory(int itemId)
-        {
-            _unitOfWork.GetRepositoryInstance<OnlineShopping.DAL.Tbl_Category>().InactiveAndDeleteMarkByWhereClause(i => i.CategoryId == itemId, (u => { u.IsActive = false; u.IsDelete = true; }));
-            return 1;
+            return View("UpdateCategory", cd);
         }
 
         /// <summary>

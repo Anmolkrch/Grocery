@@ -21,12 +21,29 @@
                     <label class="lblTxt">Category Name*</label>
                     @Html.TextBoxFor(m => m.CategoryName, new { @class = "dashInp", @onkeypress = "return OnlyLegalCharacters();" })
                     @Html.ValidationMessageFor(m => m.CategoryName)
-                </div>            
+                </div>
+                <div class="Edit-Img">
+                    <label class="lblTxt">CategoryImage Image</label>
+                    @if (Model.CategoryImage != null && Model.CategoryImage != "")
+                    {
+                        <img src="@(Path.Combine(System.Configuration.ConfigurationManager.AppSettings["CategoryImage"],"Medium/", Model.CategoryId + "_" + Model.CategoryImage))" alt="" id="ImgProfServiceBanner" />
+                        @Html.HiddenFor(m => m.CategoryImage)
+                    }
+                    else
+                    {
+                        <img src="/images/No Photo.png" alt="" id="ImgProfServiceBanner" />
+                    }
+                    <div class="edit-icon">
+                        <input type="file" id="ProfServiceBannerImg" name="_CategoryImage" style="height:1px; width:1px;display:none;" onchange="readImageURL(this, '#ImgProfServiceBanner')" />
+                        <a href="javascript:void(0)" onclick="$('#ProfServiceBannerImg').click();"><img src="/images/edit-icon2.png" alt=""></a>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.CategoryImage)
+                </div>
                 <div class="clearfix"></div>
                 <div class="dashfrm-L submitBtns">
                     <a onclick="window.history.back();" class="editBtn cancelBtn" style="width: 48%;">Cancel</a>
-                     <input type="submit" value="Submit" onclick="return CheckValidInput(this);" class="editBtn" style="width: 48%;" />
-                   
+                    <input type="submit" value="Submit" onclick="return CheckValidInput(this);" class="editBtn" style="width: 48%;" />
+
                 </div>
             </div>
         }

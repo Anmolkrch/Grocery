@@ -16,6 +16,7 @@ namespace OnlineShopping.Models
         public string CategoryName { get; set; }
         public Nullable<bool> IsActive { get; set; }
         public Nullable<bool> IsDelete { get; set; }
+        public string CategoryImage { get; set; }
     }
 
     public class ProductDetail

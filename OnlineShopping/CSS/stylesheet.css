@@ -3902,3 +3902,10 @@ share {
 .detailservicesBox {
     border: none !important;
 }
+.categories.opens {
+    left: 0;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    text-align: center;
+}

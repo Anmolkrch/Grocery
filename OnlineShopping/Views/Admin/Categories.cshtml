@@ -21,6 +21,7 @@
                         <thead>
                             <tr>
                                 <th>Sr. No.</th>
+                                <th>Image</th>
                                 <th>Category Name</th>
                                 <th>Action</th>
                             </tr>
@@ -30,7 +31,18 @@
                             {
                                 <tr>
                                     <td>@(Model.IndexOf(item) + 1)</td>
-
+                                    <td class="ProfileImg">
+                                        <a title="Click to see the product detail" href="/admin/ProductDetail?productId=@item.CategoryId">
+                                            @{
+                                                if (File.Exists(Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["CategoryImage"] + "Small/" + item.CategoryId + "_" + item.CategoryImage)))
+                                                {
+                                                    <img src="@(System.Configuration.ConfigurationManager.AppSettings["CategoryImage"] + "Small/" + item.CategoryId + "_" + item.CategoryImage)" />
+                                                }
+                                                else
+                                                { <img src="/images/No Photo.png" alt="" />}
+                                            }
+                                        </a>
+                                    </td>
                                     <td><a style="cursor: pointer; color: #4a83d4; text-decoration: underline;" title="Click to see its products" href="/admin/products?cId=@item.CategoryId">@item.CategoryName</a></td>
 
                                     <td>

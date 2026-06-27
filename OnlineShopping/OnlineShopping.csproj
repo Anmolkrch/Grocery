@@ -845,6 +845,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\CategoryImage\" />
     <Folder Include="Content\ProductImage\Original\" />
     <Folder Include="DatabaseScript\" />
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\classes\" />

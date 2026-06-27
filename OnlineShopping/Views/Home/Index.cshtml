@@ -99,17 +99,18 @@
                                     <li>
                                         <!--Start ServicesBox-->                                                 <div class="servicesBox">
                                             <div class="servicesImg">
-                                                @if (File.Exists(Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["ProductImage"] + "/Medium/" + item.CategoryId + "_" + item.CategoryId)))
-                                                {<img src="@(System.Configuration.ConfigurationManager.AppSettings["ProductImage"]+"/Medium/"+item.CategoryId+ "_"+item.CategoryId)" alt="img"> }
+                                                @if (File.Exists(Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["CategoryImage"] + "/Medium/" + item.CategoryId + "_" + item.CategoryImage)))
+                                                {<img src="@(System.Configuration.ConfigurationManager.AppSettings["CategoryImage"]+"/Medium/"+item.CategoryId+ "_"+item.CategoryImage)" alt="img"> }
                                                 else
-                                                { <img src="@(System.Configuration.ConfigurationManager.AppSettings["ProductImage_Default"])" alt="img">}
-                                            </div>                                                     <div class="nameLink">                                                      
-                                        <a title="View Product" href="/search/productDetail?pId=@item.CategoryId">@item.CategoryName</a>                                               
-                                        <div class="byperson clearfix">                                                             <h3>Category: </h3>     
-                                                                                                        </div>        
-                                                                                                     </div>                                               
-                                        <div class="rate clearfix">                                            
-                                        <span class="fl">Price</span>                                                         <span class="blueClr fr">@item.CategoryId</span>                                                     </div>
+                                                { <img src="@(System.Configuration.ConfigurationManager.AppSettings["CategoryImage_Default"])" alt="img">}
+                                            </div>                                                     <div class="nameLink">
+                                                <a title="View Product" href="../Search/index?searchKey=@item.CategoryName">
+                                                @item.CategoryName</a>
+                                                <div class="byperson clearfix">
+                                                    <h3>Category:@item.CategoryName </h3>
+                                                </div>
+                                            </div>
+                                            
                                         </div>                                                 <!--End ServicesBox-->
                                     </li>
                                 }
