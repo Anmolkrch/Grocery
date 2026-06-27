@@ -60,11 +60,15 @@
 
                             @if (File.Exists(Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["ProductImage"] + "Medium/" + featured.ProductId + "_" + featured.ProductImage)))
                             {
-                                <img class="ProfImg" title="Click to view product detail" style="cursor:pointer;" onclick="window.location.href ='/search/productdetail?pId=@featured.ProductId'" src="@(System.Configuration.ConfigurationManager.AppSettings["ProductImage"] + "Medium/" + featured.ProductId+"_"+featured.ProductImage)" />
+                                <img class="ProfImg" title="Click to view product detail" style="cursor:pointer;" 
+                                     onclick="window.location.href ='/search/productdetail?pId=@featured.ProductId'" 
+                                     src="@(System.Configuration.ConfigurationManager.AppSettings["ProductImage"] + "Medium/" + featured.ProductId+"_"+featured.ProductImage)" />
                             }
                             else
                             {
-                                <img class="ProfImg" title="Click to view product detail" style="cursor:pointer;" onclick="window.location.href ='/search/productdetail?pId=@featured.ProductId'" src="@(System.Configuration.ConfigurationManager.AppSettings["ProductImage_Default_Medium"])" alt="" />
+                                <img class="ProfImg" title="Click to view product detail" style="cursor:pointer;" 
+                                     onclick="window.location.href ='/search/productdetail?pId=@featured.ProductId'" 
+                                     src="@(System.Configuration.ConfigurationManager.AppSettings["ProductImage_Default"])" alt="" />
                             }
                             <div class="profMid clearfix">
                                 <h2 title="Click to view product detail" style="cursor:pointer;"><a href="/search/productdetail?pId=@featured.ProductId">  @featured.ProductName</a></h2>                                 <div class="leftprof fl">

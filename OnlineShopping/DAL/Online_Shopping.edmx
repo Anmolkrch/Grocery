@@ -33,6 +33,29 @@
           <Property Name="IsActive" Type="bit" />
           <Property Name="IsDelete" Type="bit" />
           <Property Name="CategoryImage" Type="varchar" MaxLength="200" />
+          <Property Name="CategoryDescription" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Tbl_City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateId" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_MemberRole">
           <Key>
@@ -86,13 +109,34 @@
           <Property Name="ShippingDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MemberId" Type="int" />
           <Property Name="AddressLine" Type="varchar" MaxLength="100" />
-          <Property Name="City" Type="varchar" MaxLength="50" />
-          <Property Name="State" Type="varchar" MaxLength="50" />
-          <Property Name="Country" Type="varchar" MaxLength="50" />
           <Property Name="ZipCode" Type="varchar" MaxLength="50" />
           <Property Name="OrderId" Type="varchar" MaxLength="50" />
           <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="0" />
           <Property Name="PaymentType" Type="varchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="150" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="250" />
+          <Property Name="Landmark" Type="nvarchar" MaxLength="150" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Tbl_State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="StateCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDelete" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK__Tbl_Cart__CartSt__44FF419A">
           <End Role="Tbl_CartStatus" Type="Self.Tbl_CartStatus" Multiplicity="0..1" />
@@ -115,6 +159,30 @@
             </Principal>
             <Dependent Role="Tbl_Cart">
               <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_State">
+          <End Role="Tbl_State" Type="Self.Tbl_State" Multiplicity="1" />
+          <End Role="Tbl_City" Type="Self.Tbl_City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="Tbl_City">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_Country">
+          <End Role="Tbl_Country" Type="Self.Tbl_Country" Multiplicity="1" />
+          <End Role="Tbl_State" Type="Self.Tbl_State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Tbl_State">
+              <PropertyRef Name="CountryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -154,11 +222,14 @@
           <EntitySet Name="Tbl_Cart" EntityType="Self.Tbl_Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_CartStatus" EntityType="Self.Tbl_CartStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Category" EntityType="Self.Tbl_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_City" EntityType="Self.Tbl_City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Country" EntityType="Self.Tbl_Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_MemberRole" EntityType="Self.Tbl_MemberRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Members" EntityType="Self.Tbl_Members" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Product" EntityType="Self.Tbl_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Roles" EntityType="Self.Tbl_Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_ShippingDetails" EntityType="Self.Tbl_ShippingDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_State" EntityType="Self.Tbl_State" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Tbl_Cart__CartSt__44FF419A" Association="Self.FK__Tbl_Cart__CartSt__44FF419A">
             <End Role="Tbl_CartStatus" EntitySet="Tbl_CartStatus" />
             <End Role="Tbl_Cart" EntitySet="Tbl_Cart" />
@@ -166,6 +237,14 @@
           <AssociationSet Name="FK__Tbl_Cart__Produc__46E78A0C" Association="Self.FK__Tbl_Cart__Produc__46E78A0C">
             <End Role="Tbl_Product" EntitySet="Tbl_Product" />
             <End Role="Tbl_Cart" EntitySet="Tbl_Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
+            <End Role="Tbl_State" EntitySet="Tbl_State" />
+            <End Role="Tbl_City" EntitySet="Tbl_City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+            <End Role="Tbl_Country" EntitySet="Tbl_Country" />
+            <End Role="Tbl_State" EntitySet="Tbl_State" />
           </AssociationSet>
           <AssociationSet Name="FK_Tbl_Category_Tbl_Product" Association="Self.FK_Tbl_Category_Tbl_Product">
             <End Role="Tbl_Category" EntitySet="Tbl_Category" />
@@ -198,6 +277,7 @@
           <Property Name="IsDelete" Type="Boolean" />
           <NavigationProperty Name="Tbl_Product" Relationship="Self.FK_Tbl_Category_Tbl_Product" FromRole="Tbl_Category" ToRole="Tbl_Product" />
           <Property Name="CategoryImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Tbl_MemberRole">
           <Key>
@@ -311,7 +391,6 @@
           <FunctionImport Name="USP_Search" ReturnType="Collection(Online_ShoppingModel.USP_Search_Result)">
           <Parameter Name="searchKey" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="Tbl_ShippingDetails" EntityType="Online_ShoppingModel.Tbl_ShippingDetails" />
           <FunctionImport Name="USP_MemberShoppingCartDetails" ReturnType="Collection(Online_ShoppingModel.USP_MemberShoppingCartDetails_Result)">
           <Parameter Name="memberId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -328,6 +407,18 @@
             <End Role="Tbl_Product" EntitySet="Tbl_Product" />
             <End Role="Tbl_Cart" EntitySet="Tbl_Cart" />
           </AssociationSet>
+          <EntitySet Name="Tbl_City" EntityType="Online_ShoppingModel.Tbl_City" />
+          <EntitySet Name="Tbl_Country" EntityType="Online_ShoppingModel.Tbl_Country" />
+          <EntitySet Name="Tbl_State" EntityType="Online_ShoppingModel.Tbl_State" />
+          <AssociationSet Name="FK_City_State" Association="Online_ShoppingModel.FK_City_State">
+            <End Role="Tbl_State" EntitySet="Tbl_State" />
+            <End Role="Tbl_City" EntitySet="Tbl_City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_Country" Association="Online_ShoppingModel.FK_State_Country">
+            <End Role="Tbl_Country" EntitySet="Tbl_Country" />
+            <End Role="Tbl_State" EntitySet="Tbl_State" />
+          </AssociationSet>
+          <EntitySet Name="Tbl_ShippingDetails" EntityType="Online_ShoppingModel.Tbl_ShippingDetails" />
         </EntityContainer>
         <ComplexType Name="USP_Search_Result">
           <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
@@ -337,21 +428,6 @@
           <Property Type="String" Name="ProductName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="100" />
         </ComplexType>
-        <EntityType Name="Tbl_ShippingDetails">
-          <Key>
-            <PropertyRef Name="ShippingDetailId" />
-          </Key>
-          <Property Name="ShippingDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MemberId" Type="Int32" />
-          <Property Name="AddressLine" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <ComplexType Name="USP_MemberShoppingCartDetails_Result">
           <Property Type="Int32" Name="CartId" Nullable="false" />
           <Property Type="Decimal" Name="Price" Nullable="true" Precision="18" Scale="2" />
@@ -411,6 +487,92 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Tbl_City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tbl_State" Relationship="Online_ShoppingModel.FK_City_State" FromRole="Tbl_City" ToRole="Tbl_State" />
+        </EntityType>
+        <EntityType Name="Tbl_Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tbl_State" Relationship="Online_ShoppingModel.FK_State_Country" FromRole="Tbl_Country" ToRole="Tbl_State" />
+        </EntityType>
+        <EntityType Name="Tbl_State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StateCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tbl_City" Relationship="Online_ShoppingModel.FK_City_State" FromRole="Tbl_State" ToRole="Tbl_City" />
+          <NavigationProperty Name="Tbl_Country" Relationship="Online_ShoppingModel.FK_State_Country" FromRole="Tbl_State" ToRole="Tbl_Country" />
+        </EntityType>
+        <Association Name="FK_City_State">
+          <End Type="Online_ShoppingModel.Tbl_State" Role="Tbl_State" Multiplicity="1" />
+          <End Type="Online_ShoppingModel.Tbl_City" Role="Tbl_City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="Tbl_City">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_Country">
+          <End Type="Online_ShoppingModel.Tbl_Country" Role="Tbl_Country" Multiplicity="1" />
+          <End Type="Online_ShoppingModel.Tbl_State" Role="Tbl_State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Tbl_State">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tbl_ShippingDetails">
+          <Key>
+            <PropertyRef Name="ShippingDetailId" />
+          </Key>
+          <Property Name="ShippingDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberId" Type="Int32" />
+          <Property Name="AddressLine" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PaymentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AddressLine2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Landmark" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDelete" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -428,6 +590,7 @@
           <EntitySetMapping Name="Tbl_Category">
             <EntityTypeMapping TypeName="Online_ShoppingModel.Tbl_Category">
               <MappingFragment StoreEntitySet="Tbl_Category">
+                <ScalarProperty Name="CategoryDescription" ColumnName="CategoryDescription" />
                 <ScalarProperty Name="CategoryImage" ColumnName="CategoryImage" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
@@ -497,22 +660,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="Tbl_ShippingDetails">
-            <EntityTypeMapping TypeName="Online_ShoppingModel.Tbl_ShippingDetails">
-              <MappingFragment StoreEntitySet="Tbl_ShippingDetails">
-                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
-                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
-                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
-                <ScalarProperty Name="ShippingDetailId" ColumnName="ShippingDetailId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="USP_MemberShoppingCartDetails" FunctionName="Online_ShoppingModel.Store.USP_MemberShoppingCartDetails">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Online_ShoppingModel.USP_MemberShoppingCartDetails_Result">
@@ -535,6 +682,68 @@
                 <ScalarProperty Name="MemberId" ColumnName="MemberId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="CartId" ColumnName="CartId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_City">
+            <EntityTypeMapping TypeName="Online_ShoppingModel.Tbl_City">
+              <MappingFragment StoreEntitySet="Tbl_City">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Country">
+            <EntityTypeMapping TypeName="Online_ShoppingModel.Tbl_Country">
+              <MappingFragment StoreEntitySet="Tbl_Country">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_State">
+            <EntityTypeMapping TypeName="Online_ShoppingModel.Tbl_State">
+              <MappingFragment StoreEntitySet="Tbl_State">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ShippingDetails">
+            <EntityTypeMapping TypeName="Online_ShoppingModel.Tbl_ShippingDetails">
+              <MappingFragment StoreEntitySet="Tbl_ShippingDetails">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Landmark" ColumnName="Landmark" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="AddressLine" ColumnName="AddressLine" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="ShippingDetailId" ColumnName="ShippingDetailId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

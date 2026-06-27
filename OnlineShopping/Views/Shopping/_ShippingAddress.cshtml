@@ -9,19 +9,31 @@
             <input type="hidden" value="@ViewBag.CartIds" name="CartIds" />
             <div class="formRow clearfix" style="margin:20px 0;">
                 <b>Select Payment Type*</b>
-                <div style="margin-top: 8px;">
-                    <label for="radio-2" class="css-label">
-                        @Html.RadioButton("PaymentType", "Pay Using Debit/Credit Card", new { @class = "css-checkbox" })
-                        Pay Using Debit/Credit Card
-                    </label>
-                    <label for="radio-2" class="css-label">
-                        @Html.RadioButton("PaymentType", "Pay Using Net banking", new { @class = "css-checkbox" })
-                        Pay Using Net banking
-                    </label>
-                    <label for="radio-2" class="css-label">
-                        @Html.RadioButton("PaymentType", "Cash On Delivery", new { @class = "css-checkbox" })
+
+                <div style="margin-top:8px;">
+                    <label class="css-label">
+                        @Html.RadioButton("PaymentType",
+                                                        "Cash On Delivery",
+                                                        true,
+                                                        new { @class = "css-checkbox" })
                         Cash On Delivery
                     </label>
+                    @*<label class="css-label">
+                    @Html.RadioButton("PaymentType",
+                                                "Pay Using Debit/Credit Card",
+                                                false,
+                                                new { @class = "css-checkbox", disabled = "disabled" })
+                    Pay Using Debit/Credit Card
+                </label>
+
+                <label class="css-label">
+                    @Html.RadioButton("PaymentType",
+                                                "Pay Using Net banking",
+                                                false,
+                                                new { @class = "css-checkbox", disabled = "disabled" })
+                    Pay Using Net banking
+                </label>*@
+
                     @Html.ValidationMessageFor(m => m.PaymentType)
                 </div>
             </div>
@@ -33,25 +45,57 @@
             </div>
 
             <div class="formRow clearfix">
+
                 <div class="half fl">
-                    <label>City*  @Html.ValidationMessageFor(m => m.City)</label>
-                    @Html.TextBoxFor(m => m.City, new { @class = "inputComn", @placeholder = "City" })
+                    <label>
+                        Country*
+                        @Html.ValidationMessageFor(m => m.CountryId)
+                    </label>
+
+                    @Html.DropDownListFor(m => m.CountryId,
+                             Model.Countries,
+                             "-- Select Country --",
+                             new { @class = "inputComn", id = "CountryId" })
                 </div>
+
                 <div class="half fr">
-                    <label>State*  @Html.ValidationMessageFor(m => m.State)</label>
-                    @Html.TextBoxFor(m => m.State, new { @class = "inputComn", @placeholder = "State" })
+                    <label>
+                        State*
+                        @Html.ValidationMessageFor(m => m.StateId)
+                    </label>
+
+                    @Html.DropDownListFor(m => m.StateId,
+                             Model.States,
+                             "-- Select State --",
+                             new { @class = "inputComn", id = "StateId" })
                 </div>
+
             </div>
 
             <div class="formRow clearfix">
+
                 <div class="half fl">
-                    <label>Country*  @Html.ValidationMessageFor(m => m.Country)</label>
-                    @Html.TextBoxFor(m => m.Country, new { @class = "inputComn", @placeholder = "Country" })
+                    <label>
+                        City*
+                        @Html.ValidationMessageFor(m => m.CityId)
+                    </label>
+
+                    @Html.DropDownListFor(m => m.CityId,
+                             Model.Cities,
+                             "-- Select City --",
+                             new { @class = "inputComn", id = "CityId" })
                 </div>
+
                 <div class="half fr">
-                    <label>Zip Code*  @Html.ValidationMessageFor(m => m.ZipCode)</label>
-                    @Html.TextBoxFor(m => m.ZipCode, new { @class = "inputComn", @placeholder = "Zip Code" })
+                    <label>
+                        Zip Code*
+                        @Html.ValidationMessageFor(m => m.ZipCode)
+                    </label>
+
+                    @Html.TextBoxFor(m => m.ZipCode,
+                             new { @class = "inputComn", placeholder = "Zip Code" })
                 </div>
+
             </div>
             <input type="submit" class="contactBtn signupBtn" value="Proceed to Pay" />
         </div>

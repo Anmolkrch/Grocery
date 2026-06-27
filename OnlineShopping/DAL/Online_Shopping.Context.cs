@@ -47,9 +47,15 @@ public partial class Online_ShoppingEntities : DbContext
 
     public virtual DbSet<Tbl_Roles> Tbl_Roles { get; set; }
 
-    public virtual DbSet<Tbl_ShippingDetails> Tbl_ShippingDetails { get; set; }
-
     public virtual DbSet<Tbl_Cart> Tbl_Cart { get; set; }
+
+    public virtual DbSet<Tbl_City> Tbl_City { get; set; }
+
+    public virtual DbSet<Tbl_Country> Tbl_Country { get; set; }
+
+    public virtual DbSet<Tbl_State> Tbl_State { get; set; }
+
+    public virtual DbSet<Tbl_ShippingDetails> Tbl_ShippingDetails { get; set; }
 
 
     public virtual ObjectResult<USP_Search_Result> USP_Search(string searchKey)

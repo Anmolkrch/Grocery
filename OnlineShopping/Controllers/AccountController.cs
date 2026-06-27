@@ -33,15 +33,15 @@ namespace OnlineShopping.Controllers
                     Session["MemberId"] = user.MemberId;
                     Response.Cookies["MemberName"].Value = user.FirstName;
                     var roles = _unitOfWork.GetRepositoryInstance<Tbl_MemberRole>().GetFirstOrDefaultByParameter(i => i.MemberId == user.MemberId);
-                    if (roles != null && roles.RoleId != 1)
-                    {
+                    //if (roles != null && roles.RoleId != 1)
+                    //{
                         Response.Cookies["MemberRole"].Value = _unitOfWork.GetRepositoryInstance<Tbl_Roles>().GetFirstOrDefaultByParameter(i => i.RoleId == roles.RoleId).RoleName;
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("Password", "Invalid username or password");
-                        return View(model);
-                    }
+                    //}
+                    //else
+                    //{
+                    //    ModelState.AddModelError("Password", "Invalid username or password");
+                    //    return View(model);
+                    //}
                     if (model.RememberMe)
                     {
                         Response.Cookies["RememberMe_UserEmailId"].Value = model.UserEmailId; Response.Cookies["RememberMe_Password"].Value = model.Password;

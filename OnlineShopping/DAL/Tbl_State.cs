@@ -15,35 +15,39 @@ namespace OnlineShopping.DAL
 using System;
     using System.Collections.Generic;
     
-public partial class Tbl_Category
+public partial class Tbl_State
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Tbl_Category()
+    public Tbl_State()
     {
 
-        this.Tbl_Product = new HashSet<Tbl_Product>();
+        this.Tbl_City = new HashSet<Tbl_City>();
 
     }
 
 
-    public int CategoryId { get; set; }
+    public int StateId { get; set; }
 
-    public string CategoryName { get; set; }
+    public int CountryId { get; set; }
 
-    public Nullable<bool> IsActive { get; set; }
+    public string StateName { get; set; }
 
-    public Nullable<bool> IsDelete { get; set; }
+    public string StateCode { get; set; }
 
-    public string CategoryImage { get; set; }
+    public bool IsActive { get; set; }
 
-    public string CategoryDescription { get; set; }
+    public bool IsDelete { get; set; }
+
+    public System.DateTime CreatedDate { get; set; }
 
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<Tbl_Product> Tbl_Product { get; set; }
+    public virtual ICollection<Tbl_City> Tbl_City { get; set; }
+
+    public virtual Tbl_Country Tbl_Country { get; set; }
 
 }
 

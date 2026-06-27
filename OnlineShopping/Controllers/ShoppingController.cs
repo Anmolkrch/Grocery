@@ -78,11 +78,14 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         public ActionResult CheckOut()
         {
+            CheckoutViewModel checkoutViewModel = new CheckoutViewModel();
             List<USP_MemberShoppingCartDetails_Result> cd = _unitOfWork.GetRepositoryInstance<USP_MemberShoppingCartDetails_Result>().GetResultBySqlProcedure("USP_MemberShoppingCartDetails @memberId",
                new SqlParameter("memberId", System.Data.SqlDbType.Int) { Value = memberId }).ToList();
             ViewBag.TotalPrice = cd.Sum(i => i.Price);
             ViewBag.CartIds = string.Join(",", cd.Select(i => i.CartId).ToList());
-            return View(cd);
+            checkoutViewModel.ShippingDetails = GetShippingModel();
+            checkoutViewModel.CartItems = cd;
+            return View(checkoutViewModel);
         }
 
         /// <summary>
@@ -92,27 +95,103 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         public ActionResult PaymentSuccess(ShippingDetails shippingDetails)
         {
-            Tbl_ShippingDetails sd = new Tbl_ShippingDetails();
-            sd.MemberId = memberId;
-            sd.AddressLine = shippingDetails.Address;
-            sd.City = shippingDetails.City;
-            sd.State = shippingDetails.State;
-            sd.Country = shippingDetails.Country;
-            sd.ZipCode = shippingDetails.ZipCode;
-            sd.OrderId = Guid.NewGuid().ToString();
-            sd.AmountPaid = shippingDetails.TotalPrice;
-            sd.PaymentType = shippingDetails.PaymentType;
-            _unitOfWork.GetRepositoryInstance<Tbl_ShippingDetails>().Add(sd);
+            Tbl_ShippingDetails shd = new Tbl_ShippingDetails();
+            shd.MemberId = memberId;
+            shd.AddressLine = shippingDetails.Address;
+            shd.CityId = shippingDetails.CityId;
+            shd.StateId = shippingDetails.StateId;
+            shd.CountryId = shippingDetails.CountryId;
+            shd.ZipCode = shippingDetails.ZipCode;
+            shd.OrderId = Guid.NewGuid().ToString();
+            shd.AmountPaid = shippingDetails.TotalPrice;
+            shd.PaymentType = shippingDetails.PaymentType;
+            shd.CreatedDate = DateTime.Now;
+            _unitOfWork.GetRepositoryInstance<Tbl_ShippingDetails>().Add(shd);
             _unitOfWork.GetRepositoryInstance<Tbl_Cart>().UpdateByWhereClause(i => i.MemberId == memberId && i.CartStatusId == 1, (j => j.CartStatusId = 3));
             _unitOfWork.SaveChanges();
             if (!string.IsNullOrEmpty(Request["CartIds"]))
             {
                 int[] cartIdsToUpdate = Request["CartIds"].Split(',').Select(Int32.Parse).ToArray();
-                _unitOfWork.GetRepositoryInstance<Tbl_Cart>().UpdateByWhereClause(i => cartIdsToUpdate.Contains(i.CartId), (j => j.ShippingDetailId = sd.ShippingDetailId));
+                _unitOfWork.GetRepositoryInstance<Tbl_Cart>().UpdateByWhereClause(i => cartIdsToUpdate.Contains(i.CartId), (j => j.ShippingDetailId = shd.ShippingDetailId));
                 _unitOfWork.SaveChanges();
 
             }
-            return View(sd);
+            var data = from sd in _unitOfWork.GetRepositoryInstance<Tbl_ShippingDetails>().GetAllRecordsIQueryable()
+                       join c in _unitOfWork.GetRepositoryInstance<Tbl_Country>().GetAllRecordsIQueryable()
+                           on sd.CountryId equals c.CountryId
+                       join s in _unitOfWork.GetRepositoryInstance<Tbl_State>().GetAllRecordsIQueryable()
+                           on sd.StateId equals s.StateId
+                       join ct in _unitOfWork.GetRepositoryInstance<Tbl_City>().GetAllRecordsIQueryable()
+                           on sd.CityId equals ct.CityId
+                       where sd.MemberId == memberId && !sd.IsDelete
+                       select new ShippingDetailsViewModel
+                       {
+                           ShippingDetailId = sd.ShippingDetailId,
+                           MemberId = sd.MemberId,
+                           AddressLine = sd.AddressLine,
+                           AddressLine2 = sd.AddressLine2,
+                           Landmark = sd.Landmark,
+                           ZipCode = sd.ZipCode,
+                           CountryId = sd.CountryId,
+                           CountryName = c.CountryName,
+                           StateId = sd.StateId,
+                           StateName = s.StateName,
+                           CityId = sd.CityId,
+                           CityName = ct.CityName,
+                           PaymentType = sd.PaymentType,
+                           AmountPaid = sd.AmountPaid,
+                           OrderId = sd.OrderId
+                       };
+            return View(data.FirstOrDefault());
+        }
+        private ShippingDetails GetShippingModel()
+        {
+            ShippingDetails model = new ShippingDetails();
+
+            model.PaymentType = "Cash On Delivery";
+
+            model.Countries = _unitOfWork
+                .GetRepositoryInstance<Tbl_Country>()
+                .GetAllRecordsIQueryable()
+                .Where(x => x.IsActive && !x.IsDelete)
+                .Select(x => new SelectListItem
+                {
+                    Value = x.CountryId.ToString(),
+                    Text = x.CountryName
+                })
+                .ToList();
+
+            model.States = new List<SelectListItem>();
+            model.Cities = new List<SelectListItem>();
+
+            return model;
+        }
+        public JsonResult GetStates(int countryId)
+        {
+            var states = _unitOfWork.GetRepositoryInstance<Tbl_State>()
+                .GetAllRecordsIQueryable()
+                .Where(x => x.CountryId == countryId)
+                .Select(x => new
+                {
+                    x.StateId,
+                    x.StateName
+                });
+
+            return Json(states, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetCities(int stateId)
+        {
+            var cities = _unitOfWork.GetRepositoryInstance<Tbl_City>()
+                .GetAllRecordsIQueryable()
+                .Where(x => x.StateId == stateId)
+                .Select(x => new
+                {
+                    x.CityId,
+                    x.CityName
+                });
+
+            return Json(cities, JsonRequestBehavior.AllowGet);
         }
     }
 }

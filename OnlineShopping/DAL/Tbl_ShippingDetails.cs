@@ -24,12 +24,6 @@ public partial class Tbl_ShippingDetails
 
     public string AddressLine { get; set; }
 
-    public string City { get; set; }
-
-    public string State { get; set; }
-
-    public string Country { get; set; }
-
     public string ZipCode { get; set; }
 
     public string OrderId { get; set; }
@@ -37,6 +31,30 @@ public partial class Tbl_ShippingDetails
     public Nullable<decimal> AmountPaid { get; set; }
 
     public string PaymentType { get; set; }
+
+    public string FullName { get; set; }
+
+    public string MobileNo { get; set; }
+
+    public string AddressLine2 { get; set; }
+
+    public string Landmark { get; set; }
+
+    public Nullable<int> CountryId { get; set; }
+
+    public Nullable<int> StateId { get; set; }
+
+    public Nullable<int> CityId { get; set; }
+
+    public bool IsDefault { get; set; }
+
+    public bool IsActive { get; set; }
+
+    public bool IsDelete { get; set; }
+
+    public System.DateTime CreatedDate { get; set; }
+
+    public Nullable<System.DateTime> ModifiedDate { get; set; }
 
 }
 

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace OnlineShopping.Models
@@ -10,18 +7,35 @@ namespace OnlineShopping.Models
     public class ShippingDetails
     {
         public string OrderId { get; set; }
+
         [Required]
+        [Display(Name = "Address")]
         public string Address { get; set; }
+
         [Required]
-        public string City { get; set; }
+        [Display(Name = "Country")]
+        public int? CountryId { get; set; }
+
         [Required]
-        public string State { get; set; }
+        [Display(Name = "State")]
+        public int? StateId { get; set; }
+
         [Required]
-        public string Country { get; set; }
+        [Display(Name = "City")]
+        public int? CityId { get; set; }
+
         [Required]
-        public string ZipCode { get; set; }   
+        [Display(Name = "Zip Code")]
+        public string ZipCode { get; set; }
+
         public decimal TotalPrice { get; set; }
+
         [Required]
         public string PaymentType { get; set; }
+
+        // Dropdowns
+        public IEnumerable<SelectListItem> Countries { get; set; }
+        public IEnumerable<SelectListItem> States { get; set; }
+        public IEnumerable<SelectListItem> Cities { get; set; }
     }
 }

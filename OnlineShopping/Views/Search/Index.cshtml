@@ -1,21 +1,5 @@
 ﻿@model IEnumerable<OnlineShopping.DAL.USP_Search_Result>
     @{     ViewBag.Title = "Search Result"; Layout = "~/Views/Shared/_FrontLayout.cshtml"; }
-    <style>
-        .servicesBox .servicesImg img {
-            height: 172px;
-            width: 270px;
-        }
-
-        .DservicesImg img {
-            height: 162px;
-            width: 254px;
-        }
-
-        .FilterBox {
-            max-height: 200px;
-            overflow: auto;
-        }
-    </style>
     @using (Html.BeginForm())
     {     <div id="dvFilterSearch">
         <div class="mainHouse">

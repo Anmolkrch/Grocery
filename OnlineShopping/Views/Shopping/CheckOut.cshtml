@@ -1,4 +1,4 @@
-﻿@model List<OnlineShopping.DAL.USP_MemberShoppingCartDetails_Result>
+﻿@model OnlineShopping.Models.CheckoutViewModel
 @{
     ViewBag.Title = "MyCart";
     Layout = "~/Views/Shared/_FrontLayout.cshtml";
@@ -21,12 +21,12 @@
             </h2>
             <!-- Start servicesRight-->
             <div class="servicesRight1">
-                @if (Model.Count() > 0)
+                @if (Model.CartItems.Any())
                 {
                     <div style="background-color: white;  padding: 20px;">
-                        <b>You have following @Model.Count() items in your cart</b>
+                        <b>You have following @Model.CartItems.Any() items in your cart</b>
                         <br /><br />
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.CartItems)
                         {
                             <h3><a title="View Product Detail" href="/search/ProductDetail?pId=@item.ProductId"> <b> @item.ProductName</b>,  </a> <span>Price : </span><b>@item.Price</b></h3>
                         }
@@ -46,10 +46,69 @@
                 }
                 <br />
                 <br />
-                <h3 style="font-weight: bold;color: brown;"> Total Amount to Pay : @Model.Sum(i => i.Price)</h3>
-                @Html.Partial("_ShippingAddress", new OnlineShopping.Models.ShippingDetails())
+                <h3 style="font-weight: bold;color: brown;"> Total Amount to Pay : @Model.CartItems.Sum(i => i.Price)</h3>
+                @Html.Partial("_ShippingAddress", Model.ShippingDetails)
             </div>
         </div>
     </div>
 </div>
 
+<script>
+$(function () {
+
+    $("#CountryId").change(function () {
+
+        var countryId = $(this).val();
+
+        $("#StateId").html('<option>Loading...</option>');
+        $("#CityId").html('<option value="">-- Select City --</option>');
+
+        $.get('@Url.Action("GetStates","Shopping")',
+            { countryId: countryId },
+            function (data) {
+
+                $("#StateId").empty();
+                $("#StateId").append('<option value="">-- Select State --</option>');
+
+                $.each(data, function (i, item) {
+
+                    $("#StateId").append(
+                        $('<option/>')
+                            .val(item.StateId)
+                            .text(item.StateName));
+
+                });
+
+            });
+
+    });
+
+
+    $("#StateId").change(function () {
+
+        var stateId = $(this).val();
+
+        $("#CityId").html('<option>Loading...</option>');
+
+        $.get('@Url.Action("GetCities","Shopping")',
+            { stateId: stateId },
+            function (data) {
+
+                $("#CityId").empty();
+                $("#CityId").append('<option value="">-- Select City --</option>');
+
+                $.each(data, function (i, item) {
+
+                    $("#CityId").append(
+                        $('<option/>')
+                            .val(item.CityId)
+                            .text(item.CityName));
+
+                });
+
+            });
+
+    });
+
+});
+</script>
