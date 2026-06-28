@@ -26,6 +26,8 @@ public partial class Tbl_Members
 
         this.Tbl_Cart = new HashSet<Tbl_Cart>();
 
+        this.Tbl_Vendors = new HashSet<Tbl_Vendors>();
+
     }
 
 
@@ -47,6 +49,8 @@ public partial class Tbl_Members
 
     public Nullable<System.DateTime> ModifiedOn { get; set; }
 
+    public int Pincode { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -56,6 +60,10 @@ public partial class Tbl_Members
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Tbl_Cart> Tbl_Cart { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Tbl_Vendors> Tbl_Vendors { get; set; }
 
 }
 

@@ -1,0 +1,68 @@
+﻿@model OnlineShopping.Models.UserViewModel
+@{
+    ViewBag.Title = "UserDetail";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<div class="rightpart">
+    <div class="sechBx clearfix">
+        <div class="bretcrum"><a href="#">Dashboard</a>&nbsp; » <span>Form</span></div>
+    </div>
+    <div class="dashBx">
+        @using (Html.BeginForm("UpdateUser", "User", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="dashboardHD">
+                @(Request.Url.ToString().ToLower().Contains("adduser") ? "Add User" : "Update User")
+            </div>
+            <div class="dashformBx dashformBx2 clearfix">
+                @Html.HiddenFor(m => m.MemberId)
+                @Html.HiddenFor(m => m.RoleName)
+                <div class="dashfrm-L">
+                    <label class="lblTxt">First Name*</label>
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "dashInp" })
+                    @Html.ValidationMessageFor(m => m.FirstName)
+                </div>
+
+                <div class="dashfrm-L">
+                    <label class="lblTxt">Last Name*</label>
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "dashInp" })
+                    @Html.ValidationMessageFor(m => m.LastName)
+                </div>
+
+                <div class="dashfrm-L">
+                    <label class="lblTxt">Email*</label>
+                    @Html.TextBoxFor(m => m.EmailId, new { @class = "dashInp", type = "email" })
+                    @Html.ValidationMessageFor(m => m.EmailId)
+                </div>
+
+                <div class="dashfrm-L">
+                    <label class="lblTxt">Role*</label>
+                    @Html.DropDownListFor(m => m.RoleId, Model.Roles, "-- Select Role --", new { @class = "dashInp" })
+                    @Html.ValidationMessageFor(m => m.RoleId)
+                </div>
+                <div class="dashfrm-L">
+                    <label class="lblTxt">PinCode*</label>
+
+                    @Html.TextBoxFor(m => m.PinCode, new { @class = "dashInp", @placeholder = "Pin Code" })
+                    @Html.ValidationMessageFor(m => m.PinCode)
+                </div>
+                <div class="dashfrm-L">
+                    <label class="lblTxt">Active</label>
+                    @Html.CheckBoxFor(m => m.IsActive)
+                </div>
+
+                <div class="dashfrm-L">
+                    <label class="lblTxt">Deleted</label>
+                    @Html.CheckBoxFor(m => m.IsDelete)
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="dashfrm-L submitBtns">
+                    <a onclick="window.history.back();" class="editBtn cancelBtn" style="width: 48%;">Cancel</a>
+                    <input type="submit" value="Submit" class="editBtn" style="width: 48%;" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -126,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -180,6 +181,9 @@
     <Compile Include="DAL\Tbl_State.cs">
       <DependentUpon>Online_Shopping.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Tbl_Vendors.cs">
+      <DependentUpon>Online_Shopping.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\USP_MemberShoppingCartDetails_Result.cs">
       <DependentUpon>Online_Shopping.tt</DependentUpon>
     </Compile>
@@ -197,6 +201,7 @@
     <Compile Include="Models\CityViewModel.cs" />
     <Compile Include="Models\ShippingDetailsViewModel.cs" />
     <Compile Include="Models\Shopping.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\GenericUnitOfWork.cs" />
@@ -889,6 +894,8 @@
     <Content Include="Views\Master\Cities.cshtml" />
     <Content Include="Views\Master\UpdateCity.cshtml" />
     <Content Include="Views\Shared\_AdminMenu.cshtml" />
+    <Content Include="Views\User\Users.cshtml" />
+    <Content Include="Views\User\UpdateUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

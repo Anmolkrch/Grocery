@@ -33,15 +33,11 @@ namespace OnlineShopping.Controllers
                     Session["MemberId"] = user.MemberId;
                     Response.Cookies["MemberName"].Value = user.FirstName;
                     var roles = _unitOfWork.GetRepositoryInstance<Tbl_MemberRole>().GetFirstOrDefaultByParameter(i => i.MemberId == user.MemberId);
-                    //if (roles != null && roles.RoleId != 1)
-                    //{
-                        Response.Cookies["MemberRole"].Value = _unitOfWork.GetRepositoryInstance<Tbl_Roles>().GetFirstOrDefaultByParameter(i => i.RoleId == roles.RoleId).RoleName;
-                    //}
-                    //else
-                    //{
-                    //    ModelState.AddModelError("Password", "Invalid username or password");
-                    //    return View(model);
-                    //}
+                    if (roles != null && roles.RoleId == 1)
+                    {
+                        return Redirect(!string.IsNullOrEmpty(returnUrl)? returnUrl : "/admin/dashboard");
+                    }
+                    Response.Cookies["MemberRole"].Value = _unitOfWork.GetRepositoryInstance<Tbl_Roles>().GetFirstOrDefaultByParameter(i => i.RoleId == roles.RoleId).RoleName;
                     if (model.RememberMe)
                     {
                         Response.Cookies["RememberMe_UserEmailId"].Value = model.UserEmailId; Response.Cookies["RememberMe_Password"].Value = model.Password;
@@ -88,6 +84,7 @@ namespace OnlineShopping.Controllers
                 mem.Password = EncryptDecrypt.Encrypt(model.Password, true);
                 mem.IsActive = true;
                 mem.IsDelete = false;
+                mem.Pincode  = model.PinCode;
                 _unitOfWork.GetRepositoryInstance<Tbl_Members>().Add(mem);
                 // Adding Member Role                 
                 Tbl_MemberRole mem_Role = new Tbl_MemberRole();

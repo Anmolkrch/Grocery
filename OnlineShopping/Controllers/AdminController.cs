@@ -14,7 +14,7 @@ using System.Web.Mvc;
 
 namespace OnlineShopping.Controllers
 {
-    [AuthorizeUser(Roles = "Admin")]
+    [AuthorizeUser(Roles = "Admin,SuperAdmin")]
     public class AdminController : Controller
     {
         #region Other Class references ...

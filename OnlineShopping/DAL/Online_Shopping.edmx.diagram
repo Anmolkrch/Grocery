@@ -24,6 +24,9 @@
         <AssociationConnector Association="Online_ShoppingModel.FK_City_State" />
         <AssociationConnector Association="Online_ShoppingModel.FK_State_Country" />
         <EntityTypeShape EntityType="Online_ShoppingModel.Tbl_ShippingDetails" Width="1.5" PointX="7.375" PointY="4.75" />
+        <EntityTypeShape EntityType="Online_ShoppingModel.Tbl_Vendors" Width="1.5" PointX="3" PointY="14.125" />
+        <AssociationConnector Association="Online_ShoppingModel.FK_Vendor_Member" />
+        <AssociationConnector Association="Online_ShoppingModel.FK_Product_Vendor" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

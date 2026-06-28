@@ -27,10 +27,10 @@
                     @Html.TextBoxFor(m => m.LastName, new { @class = "inputComn", @placeholder = "Last Name" })
                 </div>
             </div>         <div class="formRow clearfix">
-                <div>
+             <div>
                     @Html.ValidationMessageFor(m => m.UserEmailId)
                     @Html.TextBoxFor(m => m.UserEmailId, new { @class = "inputComn", @placeholder = "Email Address" })
-                </div>
+             </div>
             </div>
 
             <div class="formRow clearfix">
@@ -44,7 +44,13 @@
                     @Html.ValidationMessageFor(m => m.ConfirmPassword)
                     @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "inputComn", @placeholder = "ConfirmPassword", @type = "Password" })
                 </div>
-            </div>  
+            </div>
+            <div class="formRow clearfix">
+                <div>
+                    @Html.ValidationMessageFor(m => m.PinCode)
+                    @Html.TextBoxFor(m => m.PinCode, new { @class = "inputComn", @placeholder = "Pin Code" })
+                </div>
+            </div>
                  @Html.HiddenFor(m=>m.UserType)  
             <input type="submit" class="contactBtn signupBtn" value="Submit" />      
         }

@@ -7,7 +7,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>C:\Client\PublishSite\OnlineShop</_PublishTargetUrl>
-    <History>True|2026-06-27T15:17:26.2095658Z||;True|2026-06-27T16:27:51.9814722+05:30||;</History>
+    <History>True|2026-06-28T06:21:50.7592084Z||;True|2026-06-27T20:47:26.2095658+05:30||;True|2026-06-27T16:27:51.9814722+05:30||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -33,10 +33,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:11</publishTime>
     </File>
     <File Include="bin/OnlineShopping.dll">
-      <publishTime>06/27/2026 21:44:03</publishTime>
+      <publishTime>06/28/2026 11:51:45</publishTime>
     </File>
     <File Include="bin/OnlineShopping.pdb">
-      <publishTime>06/27/2026 21:44:03</publishTime>
+      <publishTime>06/28/2026 11:51:45</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/27/2026 12:50:11</publishTime>
@@ -744,7 +744,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>06/27/2026 12:50:02</publishTime>
+      <publishTime>06/27/2026 22:50:05</publishTime>
     </File>
     <File Include="Images/aboutusBG.jpg">
       <publishTime>06/27/2026 12:50:04</publishTime>
@@ -1992,10 +1992,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Views/Admin/_AdminLayout.cshtml">
-      <publishTime>06/27/2026 12:50:10</publishTime>
+      <publishTime>06/28/2026 11:25:45</publishTime>
     </File>
     <File Include="Views/Admin/_AdminMenu.cshtml">
-      <publishTime>06/27/2026 12:50:10</publishTime>
+      <publishTime>06/28/2026 11:23:21</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
       <publishTime>06/27/2026 12:50:10</publishTime>
@@ -2005,6 +2005,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>06/27/2026 19:48:10</publishTime>
+    </File>
+    <File Include="Views/Master/Cities.cshtml">
+      <publishTime>06/28/2026 11:38:43</publishTime>
+    </File>
+    <File Include="Views/Master/UpdateCity.cshtml">
+      <publishTime>06/28/2026 11:43:26</publishTime>
     </File>
     <File Include="Views/Search/Index.cshtml">
       <publishTime>06/27/2026 17:35:42</publishTime>
@@ -2023,6 +2029,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/27/2026 12:50:10</publishTime>
+    </File>
+    <File Include="Views/Shared/_AdminMenu.cshtml">
+      <publishTime>06/28/2026 11:47:55</publishTime>
     </File>
     <File Include="Views/Shared/_FrontLayout.cshtml">
       <publishTime>06/27/2026 13:11:58</publishTime>
@@ -2052,7 +2061,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/27/2026 21:13:56</publishTime>
+      <publishTime>06/27/2026 22:30:25</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -57,6 +57,8 @@ public partial class Online_ShoppingEntities : DbContext
 
     public virtual DbSet<Tbl_ShippingDetails> Tbl_ShippingDetails { get; set; }
 
+    public virtual DbSet<Tbl_Vendors> Tbl_Vendors { get; set; }
+
 
     public virtual ObjectResult<USP_Search_Result> USP_Search(string searchKey)
     {
