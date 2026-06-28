@@ -170,7 +170,7 @@ namespace OnlineShopping.Controllers
         {
             var states = _unitOfWork.GetRepositoryInstance<Tbl_State>()
                 .GetAllRecordsIQueryable()
-                .Where(x => x.CountryId == countryId)
+                .Where(x => x.CountryId == countryId && x.IsActive && !x.IsDelete)
                 .Select(x => new
                 {
                     x.StateId,
@@ -184,7 +184,7 @@ namespace OnlineShopping.Controllers
         {
             var cities = _unitOfWork.GetRepositoryInstance<Tbl_City>()
                 .GetAllRecordsIQueryable()
-                .Where(x => x.StateId == stateId)
+                .Where(x => x.StateId == stateId && x.IsActive && !x.IsDelete)
                 .Select(x => new
                 {
                     x.CityId,

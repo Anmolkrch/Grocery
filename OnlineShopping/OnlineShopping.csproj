@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -51,10 +50,6 @@
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -211,9 +206,35 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CategoryImage\Medium\10_zero-waste-beauty-products.jpg" />
+    <Content Include="Content\CategoryImage\Medium\11_beauty-product-still-life.jpg" />
+    <Content Include="Content\CategoryImage\Medium\12_various-colorful-pet-accessories-still-life-concept.jpg" />
+    <Content Include="Content\CategoryImage\Medium\1_pexels-biravencrow-34700570.jpg" />
+    <Content Include="Content\CategoryImage\Medium\2_top-view-dairy-products-with-eggs-box.jpg" />
+    <Content Include="Content\CategoryImage\Medium\3_lots-bakery-table.jpg" />
+    <Content Include="Content\CategoryImage\Medium\4_legumes-beans-assortment-different-bowls.jpg" />
+    <Content Include="Content\CategoryImage\Medium\5_top-view-raw-rice-with-lemons-seasonings-dark-surface-spice-fruit-raw-food.jpg" />
+    <Content Include="Content\CategoryImage\Medium\6_top-view-fast-food-meal.jpg" />
+    <Content Include="Content\CategoryImage\Medium\7_top-view-fresh-fish-slices-with-red-tomatoes-greens-dark-background.jpg" />
+    <Content Include="Content\CategoryImage\Medium\8_pexels-noviana-28670063.jpg" />
+    <Content Include="Content\CategoryImage\Medium\9_flat-lay-composition-cleaning-products-with-copyspace.jpg" />
+    <Content Include="Content\CategoryImage\Small\10_zero-waste-beauty-products.jpg" />
+    <Content Include="Content\CategoryImage\Small\11_beauty-product-still-life.jpg" />
+    <Content Include="Content\CategoryImage\Small\12_various-colorful-pet-accessories-still-life-concept.jpg" />
+    <Content Include="Content\CategoryImage\Small\1_pexels-biravencrow-34700570.jpg" />
+    <Content Include="Content\CategoryImage\Small\2_top-view-dairy-products-with-eggs-box.jpg" />
+    <Content Include="Content\CategoryImage\Small\3_lots-bakery-table.jpg" />
+    <Content Include="Content\CategoryImage\Small\4_legumes-beans-assortment-different-bowls.jpg" />
+    <Content Include="Content\CategoryImage\Small\5_top-view-raw-rice-with-lemons-seasonings-dark-surface-spice-fruit-raw-food.jpg" />
+    <Content Include="Content\CategoryImage\Small\6_top-view-fast-food-meal.jpg" />
+    <Content Include="Content\CategoryImage\Small\7_top-view-fresh-fish-slices-with-red-tomatoes-greens-dark-background.jpg" />
+    <Content Include="Content\CategoryImage\Small\8_pexels-noviana-28670063.jpg" />
+    <Content Include="Content\CategoryImage\Small\9_flat-lay-composition-cleaning-products-with-copyspace.jpg" />
+    <Content Include="Content\ProductImage\Large\10_gregmontani-mangoes-823598.jpg" />
     <Content Include="Content\ProductImage\Large\10_pi4.jpg" />
     <Content Include="Content\ProductImage\Large\1_Penguins.jpg" />
     <Content Include="Content\ProductImage\Large\2_Penguins.jpg" />
+    <Content Include="Content\ProductImage\Large\2_pexels-freestockpro-12955951.jpg" />
     <Content Include="Content\ProductImage\Large\2_samsung-galaxy-on5-spotted-1.jpg" />
     <Content Include="Content\ProductImage\Large\3_download %281%29.jpg" />
     <Content Include="Content\ProductImage\Large\3_Jellyfish.jpg" />
@@ -227,15 +248,19 @@
     <Content Include="Content\ProductImage\Large\8_50.png" />
     <Content Include="Content\ProductImage\Large\8_cofee3.jpg" />
     <Content Include="Content\ProductImage\Large\8_mobiles-c59b1ba6cb951bf85cbb9c06f1cc31dc.png" />
+    <Content Include="Content\ProductImage\Large\8_pexels-freestockpro-12955951.jpg" />
+    <Content Include="Content\ProductImage\Large\9_pexels-freestockpro-12955951.jpg" />
     <Content Include="Content\ProductImage\Large\9_pi4.jpg" />
     <Content Include="Content\ProductImage\Large\Htc-Desire-516-white--SDL232582179-1-71d4a.jpg" />
     <Content Include="Content\ProductImage\Large\images %281%29.jpg" />
     <Content Include="Content\ProductImage\Large\images.jpg" />
     <Content Include="Content\ProductImage\Large\mobile-dev4.png" />
     <Content Include="Content\ProductImage\Large\ubuntu-mobile-os-1.jpg" />
+    <Content Include="Content\ProductImage\Medium\10_gregmontani-mangoes-823598.jpg" />
     <Content Include="Content\ProductImage\Medium\10_pi4.jpg" />
     <Content Include="Content\ProductImage\Medium\1_Penguins.jpg" />
     <Content Include="Content\ProductImage\Medium\2_Penguins.jpg" />
+    <Content Include="Content\ProductImage\Medium\2_pexels-freestockpro-12955951.jpg" />
     <Content Include="Content\ProductImage\Medium\2_samsung-galaxy-on5-spotted-1.jpg" />
     <Content Include="Content\ProductImage\Medium\3_download %281%29.jpg" />
     <Content Include="Content\ProductImage\Medium\3_Jellyfish.jpg" />
@@ -249,10 +274,14 @@
     <Content Include="Content\ProductImage\Medium\8_50.png" />
     <Content Include="Content\ProductImage\Medium\8_cofee3.jpg" />
     <Content Include="Content\ProductImage\Medium\8_mobiles-c59b1ba6cb951bf85cbb9c06f1cc31dc.png" />
+    <Content Include="Content\ProductImage\Medium\8_pexels-freestockpro-12955951.jpg" />
+    <Content Include="Content\ProductImage\Medium\9_pexels-freestockpro-12955951.jpg" />
     <Content Include="Content\ProductImage\Medium\9_pi4.jpg" />
+    <Content Include="Content\ProductImage\Small\10_gregmontani-mangoes-823598.jpg" />
     <Content Include="Content\ProductImage\Small\10_pi4.jpg" />
     <Content Include="Content\ProductImage\Small\1_Penguins.jpg" />
     <Content Include="Content\ProductImage\Small\2_Penguins.jpg" />
+    <Content Include="Content\ProductImage\Small\2_pexels-freestockpro-12955951.jpg" />
     <Content Include="Content\ProductImage\Small\2_samsung-galaxy-on5-spotted-1.jpg" />
     <Content Include="Content\ProductImage\Small\3_download %281%29.jpg" />
     <Content Include="Content\ProductImage\Small\3_Jellyfish.jpg" />
@@ -266,6 +295,8 @@
     <Content Include="Content\ProductImage\Small\8_50.png" />
     <Content Include="Content\ProductImage\Small\8_cofee3.jpg" />
     <Content Include="Content\ProductImage\Small\8_mobiles-c59b1ba6cb951bf85cbb9c06f1cc31dc.png" />
+    <Content Include="Content\ProductImage\Small\8_pexels-freestockpro-12955951.jpg" />
+    <Content Include="Content\ProductImage\Small\9_pexels-freestockpro-12955951.jpg" />
     <Content Include="Content\ProductImage\Small\9_pi4.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -856,7 +887,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\CategoryImage\" />
+    <Folder Include="Content\CategoryImage\Original\" />
     <Folder Include="Content\ProductImage\Original\" />
     <Folder Include="DatabaseScript\" />
     <Folder Include="Scripts\tiny_mce\plugins\spellchecker\classes\" />
@@ -902,7 +933,6 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
