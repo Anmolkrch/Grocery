@@ -35,7 +35,11 @@
                     @Html.TextBoxFor(m => m.EmailId, new { @class = "dashInp", type = "email" })
                     @Html.ValidationMessageFor(m => m.EmailId)
                 </div>
-
+                <div class="dashfrm-L">
+                    <label class="lblTxt">Email*</label>
+                    @Html.TextBoxFor(m => m.Phone, new { @class = "dashInp", type = "email" })
+                    @Html.ValidationMessageFor(m => m.Phone)
+                </div>
                 <div class="dashfrm-L">
                     <label class="lblTxt">Role*</label>
                     @Html.DropDownListFor(m => m.RoleId, Model.Roles, "-- Select Role --", new { @class = "dashInp" })

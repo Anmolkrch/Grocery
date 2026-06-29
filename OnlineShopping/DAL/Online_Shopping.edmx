@@ -79,6 +79,7 @@
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedOn" Type="datetime" />
           <Property Name="Pincode" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Tbl_Product">
           <Key>
@@ -96,6 +97,7 @@
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
           <Property Name="IsFeatured" Type="bit" />
           <Property Name="VendorId" Type="int" />
+          <Property Name="Pincode" Type="int" />
         </EntityType>
         <EntityType Name="Tbl_Roles">
           <Key>
@@ -356,6 +358,7 @@
           <NavigationProperty Name="Tbl_Cart" Relationship="Online_ShoppingModel.FK__Tbl_Cart__Member__3C69FB99" FromRole="Tbl_Members" ToRole="Tbl_Cart" />
           <Property Name="Pincode" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Tbl_Vendors" Relationship="Online_ShoppingModel.FK_Vendor_Member" FromRole="Tbl_Members" ToRole="Tbl_Vendors" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Tbl_Product">
           <Key>
@@ -376,6 +379,7 @@
           <NavigationProperty Name="Tbl_Cart" Relationship="Online_ShoppingModel.FK__Tbl_Cart__Produc__3E52440B" FromRole="Tbl_Product" ToRole="Tbl_Cart" />
           <Property Name="VendorId" Type="Int32" />
           <NavigationProperty Name="Tbl_Vendors" Relationship="Online_ShoppingModel.FK_Product_Vendor" FromRole="Tbl_Product" ToRole="Tbl_Vendors" />
+          <Property Name="Pincode" Type="Int32" />
         </EntityType>
         <EntityType Name="Tbl_Roles">
           <Key>
@@ -715,6 +719,7 @@
           <EntitySetMapping Name="Tbl_Members">
             <EntityTypeMapping TypeName="Online_ShoppingModel.Tbl_Members">
               <MappingFragment StoreEntitySet="Tbl_Members">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Pincode" ColumnName="Pincode" />
                 <ScalarProperty Name="MemberId" ColumnName="MemberId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -731,6 +736,7 @@
           <EntitySetMapping Name="Tbl_Product">
             <EntityTypeMapping TypeName="Online_ShoppingModel.Tbl_Product">
               <MappingFragment StoreEntitySet="Tbl_Product">
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
                 <ScalarProperty Name="VendorId" ColumnName="VendorId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="ProductName" ColumnName="ProductName" />

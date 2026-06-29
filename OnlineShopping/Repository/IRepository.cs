@@ -23,5 +23,6 @@ namespace OnlineShopping.Repository
         Tbl_Entity GetFirstOrDefaultByParameter(Expression<Func<Tbl_Entity, bool>> wherePredict);
         IEnumerable<Tbl_Entity> GetListByParameter(Expression<Func<Tbl_Entity, bool>> wherePredict);
         IEnumerable<Tbl_Entity> GetResultBySqlProcedure(string query, params object[] parameters);
+        IEnumerable<T> GetResultBySqlProcedureParams<T>(string query, params object[] parameters);
     }
 }

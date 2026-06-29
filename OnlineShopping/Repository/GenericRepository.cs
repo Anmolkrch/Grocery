@@ -142,5 +142,12 @@ namespace OnlineShopping.Repository
             else
                 return _DBEntity.Database.SqlQuery<Tbl_Entity>(query).ToList();
         }
+        public IEnumerable<T> GetResultBySqlProcedureParams<T>(string query, params object[] parameters)
+        {
+            if (parameters != null)
+                return _DBEntity.Database.SqlQuery<T>(query, parameters).ToList();
+            else
+                return _DBEntity.Database.SqlQuery<T>(query).ToList();
+        }
     }
 }

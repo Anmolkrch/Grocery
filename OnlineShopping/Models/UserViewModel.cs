@@ -18,6 +18,7 @@ namespace OnlineShopping.Models
         public string RoleName { get; set; } // for display only
         public IEnumerable<SelectListItem> Roles { get; set; }
         public int PinCode { get; set; }
+        public string Phone { get; set; }
 
     }
 

@@ -2,6 +2,7 @@
 using OnlineShopping.Filters;
 using OnlineShopping.Models;
 using OnlineShopping.Repository;
+using OnlineShopping.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -126,7 +127,7 @@ namespace OnlineShopping.Content
                         IsDelete = false
                     };
                 }
-
+                member.Password = EncryptDecrypt.Encrypt(member.PhoneNumber, true);
                 member.FirstName = uv.FirstName;
                 member.LastName = uv.LastName;
                 member.EmailId = uv.EmailId;

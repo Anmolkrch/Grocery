@@ -133,6 +133,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShoppingController.cs" />
+    <Compile Include="Controllers\VendorController.cs" />
     <Compile Include="DAL\Online_Shopping.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -195,10 +196,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AppEnums.cs" />
+    <Compile Include="Helpers\SessionHelper.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CategoryDetail.cs" />
     <Compile Include="Models\CheckoutViewModel.cs" />
     <Compile Include="Models\CityViewModel.cs" />
+    <Compile Include="Models\MemberDetailViewModel.cs" />
     <Compile Include="Models\ShippingDetailsViewModel.cs" />
     <Compile Include="Models\Shopping.cs" />
     <Compile Include="Models\UserViewModel.cs" />
@@ -206,6 +210,9 @@
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\GenericUnitOfWork.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Services\CategoryService.cs" />
+    <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Utility\EmailNotification.cs" />
     <Compile Include="Utility\EncryptDecrypt.cs" />
     <Compile Include="Utility\UploadContent.cs" />
@@ -896,6 +903,12 @@
     <Content Include="Views\Shared\_AdminMenu.cshtml" />
     <Content Include="Views\User\Users.cshtml" />
     <Content Include="Views\User\UpdateUser.cshtml" />
+    <Content Include="Views\Vendor\Dashboard.cshtml" />
+    <Content Include="Views\Vendor\_VendorLayout.cshtml" />
+    <Content Include="Views\Shared\_VendorMenu.cshtml" />
+    <Content Include="Views\Vendor\ProductDetail.cshtml" />
+    <Content Include="Views\Vendor\Products.cshtml" />
+    <Content Include="Views\Vendor\UpdateProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

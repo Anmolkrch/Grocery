@@ -2,10 +2,14 @@
 using OnlineShopping.Filters;
 using OnlineShopping.Models;
 using OnlineShopping.Repository;
+using OnlineShopping.Service;
+using OnlineShopping.Services;
 using OnlineShopping.Utility;
 using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
-using System.Web;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace OnlineShopping.Controllers
@@ -18,46 +22,72 @@ namespace OnlineShopping.Controllers
         public GenericUnitOfWork _unitOfWork = new GenericUnitOfWork();
 
         #endregion
+        private readonly UserService _userService;
 
-        #region Member Login ...         
+        public AccountController()
+        {
+            _userService = new UserService(new GenericUnitOfWork());
+        }
+        #region Member Login
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult _Login(LoginViewModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+                return PartialView("_Login", model);
+
+            var member = _userService.Login(model.UserEmailId, model.Password);
+
+            if (member == null)
             {
-                string EncryptedPassword = EncryptDecrypt.Encrypt(model.Password, true);
-                var user = _unitOfWork.GetRepositoryInstance<Tbl_Members>().GetFirstOrDefaultByParameter(i => i.EmailId == model.UserEmailId && i.Password == EncryptedPassword && i.IsDelete == false);
-                if (user != null && user.IsActive == true)
-                {
-                    Session["MemberId"] = user.MemberId;
-                    Response.Cookies["MemberName"].Value = user.FirstName;
-                    var roles = _unitOfWork.GetRepositoryInstance<Tbl_MemberRole>().GetFirstOrDefaultByParameter(i => i.MemberId == user.MemberId);
-                    if (roles != null && roles.RoleId == 1)
-                    {
-                        return Redirect(!string.IsNullOrEmpty(returnUrl)? returnUrl : "/admin/dashboard");
-                    }
-                    Response.Cookies["MemberRole"].Value = _unitOfWork.GetRepositoryInstance<Tbl_Roles>().GetFirstOrDefaultByParameter(i => i.RoleId == roles.RoleId).RoleName;
-                    if (model.RememberMe)
-                    {
-                        Response.Cookies["RememberMe_UserEmailId"].Value = model.UserEmailId; Response.Cookies["RememberMe_Password"].Value = model.Password;
-                    }
-                    else
-                    {
-                        Response.Cookies["RememberMe_UserEmailId"].Expires = DateTime.Now.AddDays(-1); Response.Cookies["RememberMe_Password"].Expires = DateTime.Now.AddDays(-1);
-                    }
-                    ViewBag.redirectUrl = (!string.IsNullOrEmpty(returnUrl) ? HttpUtility.HtmlDecode(returnUrl) : "/");
-                }
-                else
-                {
-                    if (user != null && user.IsActive == false) ModelState.AddModelError("Password", "Your account in not verified");
-                    else ModelState.AddModelError("Password", "Invalid username or password");
-                }
+                ModelState.AddModelError("Password", "Invalid username or password");
+                return PartialView("_Login", model);
             }
-            return PartialView("_Login", model);
+
+            if (!member.IsActive)
+            {
+                ModelState.AddModelError("Password", "Your account is not verified");
+                return PartialView("_Login", model);
+            }
+
+            // Set session and cookies
+            Session["MemberId"] = member.MemberId;
+            Response.Cookies["MemberName"].Value = member.FirstName;
+            Response.Cookies["MemberRole"].Value = member.RoleName;
+
+            if (model.RememberMe)
+            {
+                Response.Cookies["RememberMe_UserEmailId"].Value = model.UserEmailId;
+                Response.Cookies["RememberMe_Password"].Value = model.Password;
+            }
+            else
+            {
+                Response.Cookies["RememberMe_UserEmailId"].Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies["RememberMe_Password"].Expires = DateTime.Now.AddDays(-1);
+            }
+
+            // Redirect based on role
+            switch (member.RoleName)
+            {
+                case "Admin":
+                    return Redirect(!string.IsNullOrEmpty(returnUrl) ? returnUrl : "/admin/dashboard");
+
+                case "Vendor":
+                    Session["VendorId"] = member.VendorId; // vendor-specific session
+                    Session["VendorPinCode"] = member.Pincode;
+                    return RedirectToAction("dashboard", "vendor");
+
+                case "User":
+                    return RedirectToAction("Index", "Home");
+
+                case "DeliveryPerson":
+                    return Redirect("/delivery/dashboard");
+
+                default:
+                    return Redirect("/");
+            }
         }
         #endregion
-
 
         #region Member Registration ...         
         [AllowAnonymous]
@@ -75,22 +105,7 @@ namespace OnlineShopping.Controllers
         {
             if (ModelState.IsValid)
             {                 // Adding Member                 
-                Tbl_Members mem = new Tbl_Members();
-                mem.FirstName = model.FirstName;
-                mem.LastName = model.LastName;
-                mem.EmailId = model.UserEmailId;
-                mem.CreatedOn = DateTime.Now;
-                mem.ModifiedOn = DateTime.Now;
-                mem.Password = EncryptDecrypt.Encrypt(model.Password, true);
-                mem.IsActive = true;
-                mem.IsDelete = false;
-                mem.Pincode  = model.PinCode;
-                _unitOfWork.GetRepositoryInstance<Tbl_Members>().Add(mem);
-                // Adding Member Role                 
-                Tbl_MemberRole mem_Role = new Tbl_MemberRole();
-                mem_Role.MemberId = mem.MemberId;
-                mem_Role.RoleId = 2;
-                _unitOfWork.GetRepositoryInstance<Tbl_MemberRole>().Add(mem_Role);
+                Tbl_Members mem =_userService.Register(model);
 
                 TempData["VerificationLinlMsg"] = "You are registered successfully.";
                 Session["MemberId"] = mem.MemberId;

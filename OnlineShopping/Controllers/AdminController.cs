@@ -3,6 +3,7 @@ using OnlineShopping.DAL;
 using OnlineShopping.Filters;
 using OnlineShopping.Models;
 using OnlineShopping.Repository;
+using OnlineShopping.Service;
 using OnlineShopping.Utility;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ using System.Web.Mvc;
 
 namespace OnlineShopping.Controllers
 {
-    [AuthorizeUser(Roles = "Admin,SuperAdmin")]
+    [AuthorizeUser(Roles = "Admin,SuperAdmin,Vendor")]
     public class AdminController : Controller
     {
         #region Other Class references ...
@@ -22,7 +23,12 @@ namespace OnlineShopping.Controllers
         private GenericUnitOfWork _unitOfWork = new GenericUnitOfWork();
         UploadContent uc = new UploadContent();
         #endregion
+        private readonly ProductService _productService;
 
+        public AdminController()
+        {
+            _productService = new ProductService(new GenericUnitOfWork());
+        }
         #region Admin Login ...
         /// <summary>
         /// Login Page
@@ -86,7 +92,7 @@ namespace OnlineShopping.Controllers
                 {
                     Session["MemberId"] = user.MemberId;
                     Response.Cookies["MemberName"].Value = user.FirstName;
-                    var roles = _unitOfWork.GetRepositoryInstance<Tbl_MemberRole>().GetFirstOrDefaultByParameter(i => i.MemberId == user.MemberId && i.RoleId == model.UserType);
+                    var roles = _unitOfWork.GetRepositoryInstance<Tbl_MemberRole>().GetFirstOrDefaultByParameter(i => i.MemberId == user.MemberId);
                     if (roles != null)
                     {
                         Response.Cookies["MemberRole"].Value = _unitOfWork.GetRepositoryInstance<Tbl_Roles>().GetFirstOrDefaultByParameter(i => i.RoleId == model.UserType).RoleName;
@@ -293,7 +299,9 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         public ActionResult Products()
         {
-            List<OnlineShopping.DAL.Tbl_Product> products = _unitOfWork.GetRepositoryInstance<OnlineShopping.DAL.Tbl_Product>().GetAllRecordsIQueryable().Where(i => i.IsDelete == false).ToList();
+            int memberId = Convert.ToInt32(Session["MemberId"]);
+            string role = Request.Cookies["MemberRole"].Value;
+            var products = _productService.GetProducts(memberId, role);
             return View(products);
         }
         #endregion
@@ -315,10 +323,8 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         public ActionResult UpdateProduct(int productId)
         {
-            ProductDetail pd = _unitOfWork.GetRepositoryInstance<Tbl_Product>().GetListByParameter(i => i.ProductId == productId).Select(j => new ProductDetail { CategoryId = j.CategoryId, Description = j.Description, IsActive = j.IsActive ?? default(bool), Price = j.Price ?? default(decimal), ProductId = j.ProductId, ProductImage = j.ProductImage, ProductName = j.ProductName, IsFeatured = j.IsFeatured ?? default(bool) }).FirstOrDefault();
-            pd = pd != null ? pd : new ProductDetail();
-            pd.Categories = new SelectList(_unitOfWork.GetRepositoryInstance<Tbl_Category>().GetAllRecordsIQueryable(), "CategoryId", "CategoryName");
-            return View("UpdateProduct", pd);
+            var products = _productService.GetProductById(productId);
+            return View("UpdateProduct", products);
         }
 
         /// <summary>
@@ -334,32 +340,11 @@ namespace OnlineShopping.Controllers
         {
             if (ModelState.IsValid)
             {
-                Tbl_Product prod = _unitOfWork.GetRepositoryInstance<Tbl_Product>().GetFirstOrDefault(pd.ProductId);
-                prod = prod != null ? prod : new Tbl_Product();
-                prod.CategoryId = pd.CategoryId;
-                prod.Description = pd.Description;
-                prod.IsActive = pd.IsActive;
-                prod.IsFeatured = pd.IsFeatured;
-                prod.Price = pd.Price;
-                prod.ProductImage = _ProductImage != null ? _ProductImage.FileName : prod.ProductImage;
-                prod.ProductName = pd.ProductName;
-                prod.ModifiedDate = DateTime.Now;
-                if (prod.ProductId == 0)
-                {
-                    prod.CreatedDate = DateTime.Now;
-                    prod.IsDelete = false;
-                    _unitOfWork.GetRepositoryInstance<Tbl_Product>().Add(prod);
-                }
-                else
-                {
-                    _unitOfWork.GetRepositoryInstance<Tbl_Product>().Update(prod);
-                    _unitOfWork.SaveChanges();
-                }
-                if (_ProductImage != null)
-                    uc.UploadImage(_ProductImage, prod.ProductId + "_", "/Content/ProductImage/", Server, _unitOfWork, 0, prod.ProductId, 0);
+                var products = _productService.UpdateProduct(pd, _ProductImage, Server);
                 return RedirectToAction("Products");
             }
-            pd.Categories = new SelectList(_unitOfWork.GetRepositoryInstance<Tbl_Category>().GetAllRecordsIQueryable(), "CategoryId", "CategoryName");
+            pd.Categories = new SelectList(_unitOfWork.GetRepositoryInstance<Tbl_Category>()
+                .GetAllRecordsIQueryable(), "CategoryId", "CategoryName");
             return View("UpdateProduct", pd);
         }
 
@@ -373,7 +358,10 @@ namespace OnlineShopping.Controllers
             int productId = 0;
             if (HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["productId"] != null)
                 productId = Convert.ToInt32(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["productId"]);
-            var productExist = _unitOfWork.GetRepositoryInstance<OnlineShopping.DAL.Tbl_Product>().GetAllRecordsIQueryable().Where(i => i.ProductName == ProductName && i.ProductId != productId && i.IsActive == true && i.IsDelete == false).Count();
+            var productExist = _unitOfWork.GetRepositoryInstance<OnlineShopping.DAL.Tbl_Product>()
+                .GetAllRecordsIQueryable().Where(i => i.ProductName == ProductName && i.ProductId 
+                != productId && i.IsActive == true && i.IsDelete == false).Count();
+
             return productExist == 0 ? Json(true, JsonRequestBehavior.AllowGet) : Json(false, JsonRequestBehavior.AllowGet);
         }
         #endregion

@@ -51,6 +51,8 @@ public partial class Tbl_Product
 
     public Nullable<int> VendorId { get; set; }
 
+    public Nullable<int> Pincode { get; set; }
+
 
 
     public virtual Tbl_Category Tbl_Category { get; set; }

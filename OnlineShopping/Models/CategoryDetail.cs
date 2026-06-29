@@ -44,5 +44,8 @@ namespace OnlineShopping.Models
         public bool IsFeatured { get; set; }
 
         public SelectList Categories { get; set; }
+        public Nullable<int> VendorId { get; set; }
+
+        public Nullable<int> Pincode { get; set; }
     }
 }

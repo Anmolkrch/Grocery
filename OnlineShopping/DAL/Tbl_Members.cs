@@ -51,6 +51,8 @@ public partial class Tbl_Members
 
     public int Pincode { get; set; }
 
+    public string PhoneNumber { get; set; }
+
 
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

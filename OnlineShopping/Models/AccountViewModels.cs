@@ -48,6 +48,7 @@ namespace OnlineShopping.Models
         [Display(Name = "User type")]
         public int UserType { get; set; }
         public int PinCode { get; set; }
+        public string Phone { get; set; }
     }
 
     public class ChangePasswordViewModel

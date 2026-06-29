@@ -30,7 +30,10 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         public ActionResult Index(string searchKey = "")
         {
-            ViewBag.searchKey = searchKey; List<USP_Search_Result> sr = _unitOfWork.GetRepositoryInstance<USP_Search_Result>().GetResultBySqlProcedure("USP_Search @searchKey", new SqlParameter("searchKey", SqlDbType.VarChar) { Value = searchKey }).ToList();
+            ViewBag.searchKey = searchKey; List<USP_Search_Result> sr = 
+                _unitOfWork.GetRepositoryInstance<USP_Search_Result>().
+                GetResultBySqlProcedure("USP_Search @searchKey", 
+                new SqlParameter("searchKey", SqlDbType.VarChar) { Value = searchKey }).ToList();
             return View(sr);
         }
 
