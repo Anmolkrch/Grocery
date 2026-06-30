@@ -1,0 +1,103 @@
+﻿@model OnlineShopping.Models.ShippingDetails
+
+@using (Html.BeginForm("PaymentSuccess", "Shopping"))
+{
+    <div class="clearfix">
+        <div class="container">
+            @Html.AntiForgeryToken()
+            <input name="TotalPrice" value="@ViewBag.TotalPrice" style="position: absolute;  visibility: hidden;" />
+            <input type="hidden" value="@ViewBag.CartIds" name="CartIds" />
+            <div class="formRow clearfix" style="margin:20px 0;">
+                <b>Select Payment Type*</b>
+
+                <div style="margin-top:8px;">
+                    <label class="css-label">
+                        @Html.RadioButton("PaymentType",
+                                                        "Cash On Delivery",
+                                                        true,
+                                                        new { @class = "css-checkbox" })
+                        Cash On Delivery
+                    </label>
+                    @*<label class="css-label">
+                    @Html.RadioButton("PaymentType",
+                                                "Pay Using Debit/Credit Card",
+                                                false,
+                                                new { @class = "css-checkbox", disabled = "disabled" })
+                    Pay Using Debit/Credit Card
+                </label>
+
+                <label class="css-label">
+                    @Html.RadioButton("PaymentType",
+                                                "Pay Using Net banking",
+                                                false,
+                                                new { @class = "css-checkbox", disabled = "disabled" })
+                    Pay Using Net banking
+                </label>*@
+
+                    @Html.ValidationMessageFor(m => m.PaymentType)
+                </div>
+            </div>
+
+            <b>Shipping Address</b>
+            <div class="formRow clearfix" style="margin-top: 8px;">
+                <label>Address*  @Html.ValidationMessageFor(m => m.Address)</label>
+                @Html.TextBoxFor(m => m.Address, new { @class = "inputComn", @placeholder = "Address" })
+            </div>
+
+            <div class="formRow clearfix">
+
+                <div class="half fl">
+                    <label>
+                        Country*
+                        @Html.ValidationMessageFor(m => m.CountryId)
+                    </label>
+
+                    @Html.DropDownListFor(m => m.CountryId,
+                             Model.Countries,
+                             "-- Select Country --",
+                             new { @class = "inputComn", id = "CountryId" })
+                </div>
+
+                <div class="half fr">
+                    <label>
+                        State*
+                        @Html.ValidationMessageFor(m => m.StateId)
+                    </label>
+
+                    @Html.DropDownListFor(m => m.StateId,
+                             Model.States,
+                             "-- Select State --",
+                             new { @class = "inputComn", id = "StateId" })
+                </div>
+
+            </div>
+
+            <div class="formRow clearfix">
+
+                <div class="half fl">
+                    <label>
+                        City*
+                        @Html.ValidationMessageFor(m => m.CityId)
+                    </label>
+
+                    @Html.DropDownListFor(m => m.CityId,
+                             Model.Cities,
+                             "-- Select City --",
+                             new { @class = "inputComn", id = "CityId" })
+                </div>
+
+                <div class="half fr">
+                    <label>
+                        Zip Code*
+                        @Html.ValidationMessageFor(m => m.ZipCode)
+                    </label>
+
+                    @Html.TextBoxFor(m => m.ZipCode,
+                             new { @class = "inputComn", placeholder = "Zip Code" })
+                </div>
+
+            </div>
+            <input type="submit" class="contactBtn signupBtn" value="Proceed to Pay" />
+        </div>
+    </div>
+}
