@@ -1,10 +1,7 @@
 ﻿using OnlineShopping.DAL;
 using OnlineShopping.Filters;
-using OnlineShopping.Models;
 using OnlineShopping.Repository;
 using System;
-using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -22,7 +19,8 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            int memberId = Convert.ToInt32(Session["MemberId"]);
+        
+        int memberId = Convert.ToInt32(Session["MemberId"]);
 
             ViewBag.FeaturedProducts = _unitOfWork.GetRepositoryInstance<Tbl_Product>().
                 GetListByParameter(i => i.IsFeatured == true && i.IsDelete==false).ToList();
