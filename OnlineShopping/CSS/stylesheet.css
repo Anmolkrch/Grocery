@@ -1245,7 +1245,7 @@ input.availdate {
     }
 
 .nameLink {
-    padding: 15px;
+    padding: 12px;
     background-color: #fff;
 }
 
@@ -2050,7 +2050,7 @@ label.css-label {
     -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    margin-right:120px;
+    margin-right: 120px;
 }
 
 .customRadio {
@@ -2204,7 +2204,6 @@ ul.reviewsBy {
 }
 
     .bookaService span {
-        color: #4d4d4d;
         font-size: 15px;
         float: left;
     }
@@ -3902,6 +3901,7 @@ share {
 .detailservicesBox {
     border: none !important;
 }
+
 .categories.opens {
     left: 0;
     position: fixed;
@@ -3909,6 +3909,7 @@ share {
     right: 20px;
     text-align: center;
 }
+
 .servicesBox .servicesImg img {
     height: 172px;
     width: 270px;
@@ -3922,4 +3923,24 @@ share {
 .FilterBox {
     max-height: 200px;
     overflow: auto;
+}
+
+.mrp {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.selling-price {
+    color: #d32f2f;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.discount {
+    color: #2e7d32;
+    font-size: 14px;
+    font-weight: bold;
 }

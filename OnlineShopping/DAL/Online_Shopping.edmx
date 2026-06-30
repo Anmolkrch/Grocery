@@ -98,6 +98,8 @@
           <Property Name="IsFeatured" Type="bit" />
           <Property Name="VendorId" Type="int" />
           <Property Name="Pincode" Type="int" />
+          <Property Name="DiscountPercent" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="SellingPrice" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Tbl_Roles">
           <Key>
@@ -380,6 +382,8 @@
           <Property Name="VendorId" Type="Int32" />
           <NavigationProperty Name="Tbl_Vendors" Relationship="Online_ShoppingModel.FK_Product_Vendor" FromRole="Tbl_Product" ToRole="Tbl_Vendors" />
           <Property Name="Pincode" Type="Int32" />
+          <Property Name="DiscountPercent" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="SellingPrice" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Tbl_Roles">
           <Key>
@@ -736,6 +740,8 @@
           <EntitySetMapping Name="Tbl_Product">
             <EntityTypeMapping TypeName="Online_ShoppingModel.Tbl_Product">
               <MappingFragment StoreEntitySet="Tbl_Product">
+                <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
                 <ScalarProperty Name="Pincode" ColumnName="Pincode" />
                 <ScalarProperty Name="VendorId" ColumnName="VendorId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />

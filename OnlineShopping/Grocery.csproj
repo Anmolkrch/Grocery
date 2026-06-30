@@ -203,6 +203,7 @@
     <Compile Include="Models\CheckoutViewModel.cs" />
     <Compile Include="Models\CityViewModel.cs" />
     <Compile Include="Models\MemberDetailViewModel.cs" />
+    <Compile Include="Models\SearchResultViewModel.cs" />
     <Compile Include="Models\ShippingDetailsViewModel.cs" />
     <Compile Include="Models\Shopping.cs" />
     <Compile Include="Models\UserViewModel.cs" />

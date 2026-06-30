@@ -53,6 +53,10 @@ public partial class Tbl_Product
 
     public Nullable<int> Pincode { get; set; }
 
+    public Nullable<decimal> DiscountPercent { get; set; }
+
+    public Nullable<decimal> SellingPrice { get; set; }
+
 
 
     public virtual Tbl_Category Tbl_Category { get; set; }

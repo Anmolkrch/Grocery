@@ -41,8 +41,17 @@
         <div class="servicefinalRight fr">
             <!--Start Add product to cart-->
             <div class="bookaService">
-                <span>Price</span>
-                <strong>@Model.Price</strong>
+                <span class="mrp">
+                    ₹@Model.Price
+                </span>
+
+                <span class="selling-price">
+                    ₹@Model.SellingPrice
+                </span>
+
+                <span class="discount">
+                    @Model.DiscountPercent % OFF
+                </span>
                 <a href="/shopping/addproducttocart?productId=@Model.ProductId" class="bookreviewBtn" type="button">Add to cart</a>
             </div>
             <!--End Add product to cart-->
@@ -74,9 +83,21 @@
                                             <div class="prsonLeft fl"><h3>Category : @ov.Tbl_Category.CategoryName</h3></div>
                                         </div>
                                     </div>
-                                    <div class="rate clearfix">
-                                        <span class="fl">Price</span>
-                                        <span class="blueClr fr">@ov.Price</span>
+                                    <div class="">
+                                        <div class="bookaService">
+                                        <span class="mrp">
+                                            ₹@ov.Price
+                                        </span>
+
+                                        <span class="selling-price">
+                                            ₹@ov.SellingPrice
+                                        </span>
+
+                                        <span class="discount">
+                                            @ov.DiscountPercent % OFF
+                                        </span>
+                                            <br />
+                                        </div>
                                     </div>
                                 </div>                                 <!--End Similar Products-->
                             </li>

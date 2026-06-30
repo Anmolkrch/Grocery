@@ -79,8 +79,19 @@
                             </div>
                         </div>
                         <div class="bookaService">
-                            <span>Price</span>
-                            <strong>@featured.Price</strong>
+                            <span class="mrp">
+                                ₹@featured.Price
+                            </span>
+
+                            <span class="selling-price">
+                                ₹@featured.SellingPrice
+                            </span>
+
+                            <span class="discount">
+                                @featured.DiscountPercent % OFF
+                            </span>
+
+                            <br>
                             <a href="/shopping/addproducttocart?productId=@featured.ProductId"
                                class="bookreviewBtn" type="button">Add to cart</a>
                         </div>

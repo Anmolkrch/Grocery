@@ -1,29 +1,39 @@
-﻿@model IEnumerable<OnlineShopping.DAL.USP_Search_Result>
-    @{     ViewBag.Title = "Search Result"; Layout = "~/Views/Shared/_FrontLayout.cshtml"; }
-    @using (Html.BeginForm())
-    {     <div id="dvFilterSearch">
+﻿@model IEnumerable<OnlineShopping.Models.SearchResultViewModel>
+@{
+    ViewBag.Title = "Search Result"; Layout = "~/Views/Shared/_FrontLayout.cshtml";
+}
+@using (Html.BeginForm())
+{<div id="dvFilterSearch">
         <div class="mainHouse">
             <div class="container">
                 <div class="housekeeping clearfix">
-                    <div class="housekeepingLeft fl"><h1>@ViewBag.searchKey &nbsp; 
-                        <span>@(!string.IsNullOrEmpty(ViewBag.searchKey) ? "I" : "")  &nbsp; 
-                        @(Model != null ? Model.Count() : 0) records found</span></h1> </div>                     
-                    <div class="housekeepingRight fr" id="divFilter">
-                        <div class="housekeepingInput">
-                        <input type="text" placeholder="Enter Keywords" class="houseComn" id="searchKey" name="searchKey" 
+                    <div class="housekeepingLeft fl">
+                        <h1>
+                            @ViewBag.searchKey &nbsp;
+                        <span>
+                            @(!string.IsNullOrEmpty(ViewBag.searchKey) ? "I" : "")  &nbsp;
+                            @(Model != null ? Model.Count() : 0) records found
+                        </span>
+                    </h1>
+                </div>
+                <div class="housekeepingRight fr" id="divFilter">
+                    <div class="housekeepingInput">
+                        <input type="text" placeholder="Enter Keywords" class="houseComn" id="searchKey" name="searchKey"
                                value="@ViewBag.searchKey" onkeypress="return onlynumericOrCharacter();">
-                        </div>                      
+                    </div>
                     <div class="housekeepingSearch">
-                    <button type="button" class="housesearchBtn"
-                            onclick="$(this).parent().parent().submit();">
-                        <img src="/images/searchIcon.png" alt="img" /></button></div>
+                        <button type="button" class="housesearchBtn"
+                                onclick="$(this).parent().parent().submit();">
+                            <img src="/images/searchIcon.png" alt="img" />
+                        </button>
                     </div>
                 </div>
             </div>
-        </div>         
+        </div>
+    </div>
     <div class="mainServices clearfix">
         <div class="container">
-            <!-- Start servicesRight-->                 
+            <!-- Start servicesRight-->
             <div class="servicesRight">
                 @if (Model.Count() > 0)
                 {<!--Start pricelowHigh--> <div class="pricelowHigh clearfix">
@@ -33,7 +43,7 @@
                                     @foreach (var item in Model)
                                     {
                                         <li>
-                                            <!--Start ServicesBox-->                                                 
+                                            <!--Start ServicesBox-->
                                             <div class="servicesBox">
                                                 <div class="servicesImg">
                                                     @if (File.Exists(Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["ProductImage"] + "/Medium/" + item.ProductId + "_" + item.ProductImage)))
@@ -46,20 +56,29 @@
                                                     </a>
                                                     <div class="">
                                                         <h3>
-                                                             @Html.Raw(item.Description)
+                                                            @Html.Raw(item.Description)
                                                         </h3>
                                                     </div>
                                                 </div>
-                                            @*<div class="rate clearfix">
-                                                    <span class="fl">Price</span>
-                                                    <span class="blueClr fr">@item.Price</span>
-                                            </div>*@
-                                            <div class="bookaService">
-                                                <span>Price</span>
-                                                <strong>@item.Price</strong>
-                                                <a href="/shopping/addproducttocart?productId=@item.ProductId" 
-                                                   class="bookreviewBtn" type="button">Add to cart</a>
-                                            </div>
+                                                @*<div class="rate clearfix">
+                                                            <span class="fl">Price</span>
+                                                            <span class="blueClr fr">@item.Price</span>
+                                                    </div>*@
+                                                <div class="bookaService">
+                                                    <span class="mrp">
+                                                        ₹@item.Price
+                                                    </span>
+
+                                                    <span class="selling-price">
+                                                        ₹@item.SellingPrice
+                                                    </span>
+
+                                                    <span class="discount">
+                                                        @item.DiscountPercent % OFF
+                                                    </span>
+                                                    <a href="/shopping/addproducttocart?productId=@item.ProductId"
+                                                       class="bookreviewBtn" type="button">Add to cart</a>
+                                                </div>
                                             </div>                                                 <!--End ServicesBox-->
                                         </li>
                                     }
@@ -71,11 +90,11 @@
                 { <div class="tabContent" id="tab3">                             <!--Start Services Man-->                             <div class="clearfix">                                 <!--Start detailServicesBox-->                                 <div class="detailservicesBox clearfix">                                     <div style="background-color: #fff; text-align: center; padding: 40% 0; ">                                         <h2>No Records found</h2>                                     </div>                                 </div>                             </div>                         </div>}
             </div>
         </div>
-        </div>         <br />         <!--Start main services-->
-    </div>
-    } <!--End main services-->
-    @section Scripts{
-        <script type="text/javascript">
+    </div>         <br />         <!--Start main services-->
+</div>
+} <!--End main services-->
+@section Scripts{
+    <script type="text/javascript">
          $(document).ready(function () {
             debugger
         if('@TempData["ProductAddedToCart"]'!='')
@@ -88,5 +107,5 @@
         $('#dvFilterSearch').parent().submit();
         }
          })
-        </script>
-    }
+    </script>
+}

@@ -1,13 +1,13 @@
-﻿using OnlineShopping.Repository;
+﻿using OnlineShopping.DAL;
+using OnlineShopping.Filters;
+using OnlineShopping.Models;
+using OnlineShopping.Repository;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using OnlineShopping.DAL;
-using System.Data.SqlClient;
 using System.Data;
-using OnlineShopping.Filters;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web.Mvc;
 namespace OnlineShopping.Controllers
 {
     [FrontPageActionFilter]
@@ -30,8 +30,8 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         public ActionResult Index(string searchKey = "")
         {
-            ViewBag.searchKey = searchKey; List<USP_Search_Result> sr = 
-                _unitOfWork.GetRepositoryInstance<USP_Search_Result>().
+            ViewBag.searchKey = searchKey; List<SearchResultViewModel> sr = 
+                _unitOfWork.GetRepositoryInstance<SearchResultViewModel>().
                 GetResultBySqlProcedure("USP_Search @searchKey", 
                 new SqlParameter("searchKey", SqlDbType.VarChar) { Value = searchKey }).ToList();
             return View(sr);
