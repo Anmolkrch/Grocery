@@ -376,7 +376,7 @@ ul.langdropList {
     }
 
 .bannerSlider {
-    height: 620px;
+    height: 100px;
     background: url(../images/banner1.jpg) no-repeat center center;
     background-size: cover;
     width: 100%;
@@ -1237,7 +1237,7 @@ input.availdate {
     font-size: 15px;
     font-weight: 600;
     display: inline-block;
-    height: 40px;
+    height: 15px;
 }
 
     .nameLink > a:hover {
@@ -3943,4 +3943,16 @@ share {
     color: #2e7d32;
     font-size: 14px;
     font-weight: bold;
+}
+
+.categoriesList li .subCategories {
+    display: none; /* hide by default */
+    position: absolute; /* optional: for dropdown style */
+    background: #454545; /* styling */
+    padding: 10px;
+    z-index: 1000;
+}
+
+.categoriesList li:hover .subCategories {
+    display: block; /* show on hover */
 }

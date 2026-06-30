@@ -47,5 +47,8 @@ namespace OnlineShopping.Models
         public Nullable<int> VendorId { get; set; }
 
         public Nullable<int> Pincode { get; set; }
+        public Nullable<decimal> SellingPrice { get; set; }
+
+        public Nullable<decimal> DiscountPercent { get; set; }
     }
 }

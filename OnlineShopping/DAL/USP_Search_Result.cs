@@ -28,9 +28,11 @@ public partial class USP_Search_Result
     public string ProductName { get; set; }
 
     public string CategoryName { get; set; }
-    public Nullable<decimal> SellingPrice { get; set; }
 
     public Nullable<decimal> DiscountPercent { get; set; }
-    }
+
+    public Nullable<decimal> SellingPrice { get; set; }
+
+}
 
 }

@@ -8,8 +8,8 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile>~/Views/Admin/_AdminLayout.cshtml</WebStackScaffolding_LayoutPageFile>
     <UseIISExpress>true</UseIISExpress>
-    <NameOfLastUsedPublishProfile>C:\Client\OnlineShopping-master\OnlineShopping-master\OnlineShopping\Properties\PublishProfiles\FTPProfile.pubxml</NameOfLastUsedPublishProfile>
-    <LastActiveSolutionConfig>Release|Any CPU</LastActiveSolutionConfig>
+    <NameOfLastUsedPublishProfile>C:\Client\OnlineShopping-master\OnlineShopping-master\OnlineShopping\Properties\PublishProfiles\OnlineShop.pubxml</NameOfLastUsedPublishProfile>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />

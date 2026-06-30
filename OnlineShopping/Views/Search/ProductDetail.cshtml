@@ -1,8 +1,8 @@
-﻿@model OnlineShopping.DAL.Tbl_Product
+﻿@model OnlineShopping.Models.HomeProductViewModel
 @using OnlineShopping.DAL
-@{     ViewBag.Title = "ProductDetail";
+@{ ViewBag.Title = "ProductDetail";
     Layout = "~/Views/Shared/_FrontLayout.cshtml";
-    List<Tbl_Product> SimilarProducts = (List<Tbl_Product>)ViewBag.SimilarProducts;
+    List<OnlineShopping.Models.ProductViewModel> SimilarProducts = (List<OnlineShopping.Models.ProductViewModel>)ViewBag.SimilarProducts;
 }
 <style>
     .servicesList .servicesBox .servicesImg img {
@@ -13,16 +13,16 @@
         <div class="servicefinalLeft fl">
             <!--Start servicesdetailsBox-->
             <div class="servicesdetailsBox">
-                @if (File.Exists(Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["ProductImage"] + "Large/" + Model.ProductId + "_" + Model.ProductImage)))
+                @if (File.Exists(Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["ProductImage"] + "Large/" + Model.Product.ProductId + "_" + Model.Product.ProductImage)))
                 {
-                    <img src="@(System.Configuration.ConfigurationManager.AppSettings["ProductImage"] + "Large/" +Model.ProductId+ "_" + Model.ProductImage)" />                     }
+                    <img src="@(System.Configuration.ConfigurationManager.AppSettings["ProductImage"] + "Large/" +Model.Product.ProductId+ "_" + Model.Product.ProductImage)" /> }
                 else
                 {
                     <img src="@(System.Configuration.ConfigurationManager.AppSettings["ProductImage_Default"])" alt="" />
                 }
                 <div class="inrfinalServices">
-                    <h2>@Model.ProductName</h2>
-                    <h3>@Model.Tbl_Category.CategoryName</h3>
+                    <h2>@Model.Product.ProductName</h2>
+                    <h3>@Model.Product.CategoryName</h3>
                 </div>
             </div>
             <!--End servicesdetailsBox-->
@@ -33,7 +33,7 @@
 
                     <h1 class="prfHeading">Description</h1>
                     <div class="profInnerBox innerbox1">
-                        @Html.Raw(Model.Description)
+                        @Html.Raw(Model.Product.Description)
                     </div>
                 </div>                 <!--End aboutMe-->
             </div>             <!--End Description-->
@@ -42,17 +42,17 @@
             <!--Start Add product to cart-->
             <div class="bookaService">
                 <span class="mrp">
-                    ₹@Model.Price
+                    ₹@Model.Product.Price
                 </span>
 
                 <span class="selling-price">
-                    ₹@Model.SellingPrice
+                    ₹@Model.Product.SellingPrice
                 </span>
 
                 <span class="discount">
-                    @Model.DiscountPercent % OFF
+                    @Model.Product.DiscountPercent % OFF
                 </span>
-                <a href="/shopping/addproducttocart?productId=@Model.ProductId" class="bookreviewBtn" type="button">Add to cart</a>
+                <a href="/shopping/addproducttocart?productId=@Model.Product.ProductId" class="bookreviewBtn" type="button">Add to cart</a>
             </div>
             <!--End Add product to cart-->
             <!--Start Similar Products-->
@@ -80,22 +80,22 @@
                                     <div class="nameLink">
                                         <a href="/search/productdetail?pId=@ov.ProductId" title="View product details">@ov.ProductName</a>
                                         <div class="byperson clearfix">
-                                            <div class="prsonLeft fl"><h3>Category : @ov.Tbl_Category.CategoryName</h3></div>
+                                            <div class="prsonLeft fl"><h3>Category : @ov.CategoryName</h3></div>
                                         </div>
                                     </div>
                                     <div class="">
                                         <div class="bookaService">
-                                        <span class="mrp">
-                                            ₹@ov.Price
-                                        </span>
+                                            <span class="mrp">
+                                                ₹@ov.Price
+                                            </span>
 
-                                        <span class="selling-price">
-                                            ₹@ov.SellingPrice
-                                        </span>
+                                            <span class="selling-price">
+                                                ₹@ov.SellingPrice
+                                            </span>
 
-                                        <span class="discount">
-                                            @ov.DiscountPercent % OFF
-                                        </span>
+                                            <span class="discount">
+                                                @ov.DiscountPercent % OFF
+                                            </span>
                                             <br />
                                         </div>
                                     </div>

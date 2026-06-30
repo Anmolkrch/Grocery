@@ -36,9 +36,38 @@
                     @Html.ValidationMessageFor(m => m.ProductName)
                 </div>
                 <div class="dashfrm-R">
-                    <label class="lblTxt">Price*</label>
-                    @Html.TextBoxFor(m => m.Price, new { @class = "dashInp", @onkeypress = "return OnlyLegalCharacters();" })
+                    <label class="lblTxt">MRP Price*</label>
+                    @Html.TextBoxFor(m => m.Price, new
+                    {
+                        @class = "dashInp",
+                        @onkeypress = "return OnlyLegalCharacters();",
+                        @onkeyup = "CalculateDiscount();",
+                        @id = "Price"
+                    })
                     @Html.ValidationMessageFor(m => m.Price)
+                </div>
+
+                <div class="dashfrm-L">
+                    <label class="lblTxt">Selling Price*</label>
+                    @Html.TextBoxFor(m => m.SellingPrice, new
+                    {
+                        @class = "dashInp",
+                        @onkeypress = "return OnlyLegalCharacters();",
+                        @onkeyup = "CalculateDiscount();",
+                        @id = "SellingPrice"
+                    })
+                    @Html.ValidationMessageFor(m => m.SellingPrice)
+                </div>
+
+                <div class="dashfrm-M">
+                    <label class="lblTxt">Discount %</label>
+                    @Html.TextBoxFor(m => m.DiscountPercent, new
+                    {
+                        @class = "dashInp",
+                        @readonly = "readonly",
+                        @id = "DiscountPercent"
+                    })
+                    @Html.ValidationMessageFor(m => m.DiscountPercent)
                 </div>
                 <div class="clearfix"></div>
                 <div class="dashfrm">
@@ -66,11 +95,11 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="dashfrm">
-                    <label class="lblTxt" style="width: 137px;">@Html.CheckBoxFor(m => m.IsActive)   Is Active?</label>                 
+                    <label class="lblTxt" style="width: 137px;">@Html.CheckBoxFor(m => m.IsActive)   Is Active?</label>
                 </div>
-                 <div class="clearfix"></div>
+                <div class="clearfix"></div>
                 <div class="dashfrm">
-                    <label class="lblTxt" style="width: 137px;">@Html.CheckBoxFor(m => m.IsFeatured)   Is Featured Product?</label>                 
+                    <label class="lblTxt" style="width: 137px;">@Html.CheckBoxFor(m => m.IsFeatured)   Is Featured Product?</label>
                 </div>
                 <div class="clearfix"></div>
                 <div class="dashfrm-L submitBtns">
@@ -84,8 +113,24 @@
 
 @section js{
     <script>
+        function CalculateDiscount() {
+
+            var mrp = parseFloat($("#Price").val()) || 0;
+            var sellingPrice = parseFloat($("#SellingPrice").val()) || 0;
+
+            if (mrp > 0 && sellingPrice >= 0 && sellingPrice <= mrp) {
+
+                var discount = ((mrp - sellingPrice) / mrp) * 100;
+
+                $("#DiscountPercent").val(discount.toFixed(2));
+            }
+            else {
+                $("#DiscountPercent").val("");
+            }
+        }
         $(document).ready(function () {
             InitializeMCEEditor();
+            CalculateDiscount();
         });
     </script>
 }

@@ -1,7 +1,9 @@
 ﻿@using OnlineShopping.Utility
 @using OnlineShopping.DAL
+@model OnlineShopping.Models.HomeProductViewModel
 @{
-    List<OnlineShopping.DAL.Tbl_Category> AllCategories = (List<OnlineShopping.DAL.Tbl_Category>)ViewBag.CategoryAndSubCategory;
+    List<OnlineShopping.DAL.Tbl_Category> AllCategories = 
+        (List<OnlineShopping.DAL.Tbl_Category>)ViewBag.CategoryList;
 }
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48,7 +50,7 @@
                         {
                             <li>Hello @(Request.Cookies["MemberName"] != null && !string.IsNullOrEmpty(Request.Cookies["MemberName"].Value) ? Request.Cookies["MemberName"].Value : "User")</li>
                             <li><a href="/shopping/mycart">Cart Items</a></li>
-                             <li><a href="/account/logout">Logout</a></li>
+                            <li><a href="/account/logout">Logout</a></li>
                         }
                         else
                         {

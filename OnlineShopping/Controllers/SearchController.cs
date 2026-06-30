@@ -2,6 +2,8 @@
 using OnlineShopping.Filters;
 using OnlineShopping.Models;
 using OnlineShopping.Repository;
+using OnlineShopping.Services;
+using OnlineShopping.Utility;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,9 +15,15 @@ namespace OnlineShopping.Controllers
     [FrontPageActionFilter]
     public class SearchController : Controller
     {
-        #region Other Class references ...         
-        // Instance on Unit of Work         
-        public GenericUnitOfWork _unitOfWork = new GenericUnitOfWork();
+        #region Other Class references ...
+        // Instance on Unit of Work
+        private GenericUnitOfWork _unitOfWork = new GenericUnitOfWork();
+        UploadContent uc = new UploadContent();
+        private readonly HomeService _homeService;
+        public SearchController()
+        {
+            _homeService = new HomeService(new GenericUnitOfWork());
+        }
         private int _memberId;
         public int memberId
         {
@@ -30,11 +38,11 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         public ActionResult Index(string searchKey = "")
         {
-            ViewBag.searchKey = searchKey; List<SearchResultViewModel> sr = 
-                _unitOfWork.GetRepositoryInstance<SearchResultViewModel>().
-                GetResultBySqlProcedure("USP_Search @searchKey", 
-                new SqlParameter("searchKey", SqlDbType.VarChar) { Value = searchKey }).ToList();
-            return View(sr);
+            ViewBag.searchKey = searchKey;
+            HomeProductViewModel homeProductViewModel = new HomeProductViewModel();
+            homeProductViewModel.searchResultViewModels = _homeService.GetSearchResult(searchKey);
+            ViewBag.CategoryList = _homeService.GetActiveCategories();
+            return View(homeProductViewModel);
         }
 
         /// <summary>
@@ -44,9 +52,11 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         public ActionResult ProductDetail(int pId)
         {
-            Tbl_Product pd = _unitOfWork.GetRepositoryInstance<Tbl_Product>().GetFirstOrDefault(pId);
-            ViewBag.SimilarProducts = _unitOfWork.GetRepositoryInstance<Tbl_Product>().GetListByParameter(i => i.CategoryId == pd.CategoryId).ToList();
-            return View(pd);
+            HomeProductViewModel homeProductViewModel = new HomeProductViewModel();
+            homeProductViewModel = _homeService.GetSimilarProduct(pId);
+            ViewBag.SimilarProducts = homeProductViewModel.ProductList;
+            ViewBag.CategoryList = _homeService.GetActiveCategories();
+            return View(homeProductViewModel);
         }
         
     }

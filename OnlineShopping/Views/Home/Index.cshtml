@@ -1,6 +1,8 @@
-﻿@{
+﻿@model OnlineShopping.Models.HomeProductViewModel
+@{
     ViewBag.Title = "Online Shopping : Home Page";
     Layout = "~/Views/Shared/_FrontLayout.cshtml";
+
     List<OnlineShopping.DAL.Tbl_Product> FeaturedProducts = (List<OnlineShopping.DAL.Tbl_Product>)ViewBag.FeaturedProducts;
     List<OnlineShopping.DAL.Tbl_Category> CategoryList = (List<OnlineShopping.DAL.Tbl_Category>)ViewBag.CategoryList;
 }
@@ -24,10 +26,6 @@
         width: 254px;
     }
 
-    .FilterBox {
-        max-height: 200px;
-        overflow: auto;
-    }
 </style>
 <div class="homeSlider">
     <div class="bannerSlider" style="background: url(../images/HomePageBanner1.png) no-repeat center center;">     </div>     <div class="searchOnline clearfix">
@@ -53,7 +51,7 @@
         <h1>Featured Products</h1>
         <div class="professionSLider">
             <div class="profSlider">
-                @foreach (var featured in FeaturedProducts)
+                @foreach (var featured in Model.ProductList)
                 {
                     <div class="item">
                         <div class="profPerson">
@@ -108,45 +106,45 @@
             <!-- Start servicesRight-->                 <div class="servicesRight">
 
                 <div class="pricelowHigh clearfix">
-                    <!--Start Services Man-->                             
-                <div class="tabContent" id="tab1">
-                    <div class="servicesPerson clearfix">
-                        <ul class="prsonList">
-                            @foreach (var item in CategoryList)
-                            {
-                                <li>
-                                    <a title="View Product" href="../Search/index?searchKey=@item.CategoryName">
+                    <!--Start Services Man-->
+                    <div class="tabContent" id="tab1">
+                        <div class="servicesPerson clearfix">
+                            <ul class="prsonList">
+                                @foreach (var item in Model.CategoryList)
+                                {
+                                    <li>
+                                        <a title="View Product" href="../Search/index?searchKey=@item.CategoryName">
 
 
-                                        <!--Start ServicesBox-->
-                                        <div class="servicesBox">
-                                            <div class="servicesImg">
-                                                @if (File.Exists(Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["CategoryImage"] + "/Medium/" + item.CategoryId + "_" + item.CategoryImage)))
-                                                {
-                                                    <img src="@(System.Configuration.ConfigurationManager.AppSettings["CategoryImage"]
+                                            <!--Start ServicesBox-->
+                                            <div class="servicesBox">
+                                                <div class="servicesImg">
+                                                    @if (File.Exists(Server.MapPath(System.Configuration.ConfigurationManager.AppSettings["CategoryImage"] + "/Medium/" + item.CategoryId + "_" + item.CategoryImage)))
+                                                    {
+                                                        <img src="@(System.Configuration.ConfigurationManager.AppSettings["CategoryImage"]
                                                                     +"/Medium/"+item.CategoryId+ "_"+item.CategoryImage)" alt="img"> }
-                                                else
-                                                {
-                                                    <img src="@(System.Configuration.ConfigurationManager.AppSettings["CategoryImage_Default"])"
-                                                         alt="img">
-                                                }
-                                            </div>
-                                            <div class="nameLink">
-
-                                                @item.CategoryName
-
-                                                <div class="byperson clearfix">
-                                                    <h3>Category:@item.CategoryName </h3>
+                                                    else
+                                                    {
+                                                        <img src="@(System.Configuration.ConfigurationManager.AppSettings["CategoryImage_Default"])"
+                                                             alt="img">
+                                                    }
                                                 </div>
-                                            </div>
+                                                <div class="nameLink">
 
-                                        </div>                                                 <!--End ServicesBox-->
-                                    </a>
-                                </li>
-                            }
-                        </ul>                                     <!--End ServicesBox-->
-                    </div>                                 <!--End Services Man-->
-                </div>
+                                                    @item.CategoryName
+
+                                                    <div class="byperson clearfix">
+                                                        <h3>Category:@item.CategoryName </h3>
+                                                    </div>
+                                                </div>
+
+                                            </div>                                                 <!--End ServicesBox-->
+                                        </a>
+                                    </li>
+                                }
+                            </ul>                                     <!--End ServicesBox-->
+                        </div>                                 <!--End Services Man-->
+                    </div>
                 </div>
 
 

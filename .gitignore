@@ -6,3 +6,6 @@
 /OnlineShopping/obj
 /OnlineShopping/bin
 /packages/
+/packages/*/tools/
+*.exe
+*.ps1

@@ -1,8 +1,12 @@
 ﻿using OnlineShopping.DAL;
 using OnlineShopping.Filters;
 using OnlineShopping.Repository;
+using OnlineShopping.Service;
+using OnlineShopping.Services;
+using OnlineShopping.Utility;
 using System;
 using System.Linq;
+using System.Web.ApplicationServices;
 using System.Web.Mvc;
 
 namespace OnlineShopping.Controllers
@@ -10,30 +14,26 @@ namespace OnlineShopping.Controllers
     [FrontPageActionFilter]
     public class HomeController : Controller
     {
-        #region Other Class references ... // Instance on Unit of Work 
-        public GenericUnitOfWork _unitOfWork = new GenericUnitOfWork(); 
-        #endregion  
-        /// <summary>
-        /// Home Page
-        /// </summary>
-        /// <returns></returns>
+        #region Other Class references ...
+        // Instance on Unit of Work
+        private GenericUnitOfWork _unitOfWork = new GenericUnitOfWork();
+        UploadContent uc = new UploadContent();
+        #endregion
+        private readonly HomeService _homeService;
+
+        public HomeController()
+        {
+            _homeService = new HomeService(new GenericUnitOfWork());
+        }
+
         public ActionResult Index()
         {
-        
-        int memberId = Convert.ToInt32(Session["MemberId"]);
-
-            ViewBag.FeaturedProducts = _unitOfWork.GetRepositoryInstance<Tbl_Product>().
-                GetListByParameter(i => i.IsFeatured == true && i.IsDelete==false).ToList();
-            ViewBag.CategoryList = _unitOfWork.GetRepositoryInstance<Tbl_Category>().GetListByParameter(i =>  i.IsDelete == false && i.IsActive == true).ToList();
-            return View();
+            int memberId = Convert.ToInt32(Session["MemberId"]);
+            var result =_homeService.GetProductAndCategoryList();
+            //ViewBag.FeaturedProducts = _homeService.GetFeaturedProducts();
+            //ViewBag.CategoryList = _homeService.GetActiveCategories();
+            ViewBag.CategoryList = _homeService.GetActiveCategories();
+            return View(result);
         }
-        
-        #region Disposing UnitOfWork Context ...
-        protected override void Dispose(bool disposing)
-        {
-            _unitOfWork.Dispose();
-            base.Dispose(disposing);
-        }
-        #endregion
     }
 }

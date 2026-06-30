@@ -7,7 +7,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>C:\Client\PublishSite\OnlineShop</_PublishTargetUrl>
-    <History>True|2026-06-28T06:21:50.7592084Z||;True|2026-06-27T20:47:26.2095658+05:30||;True|2026-06-27T16:27:51.9814722+05:30||;</History>
+    <History>True|2026-06-30T03:46:26.9778435Z||;True|2026-06-28T11:51:50.7592084+05:30||;True|2026-06-27T20:47:26.2095658+05:30||;True|2026-06-27T16:27:51.9814722+05:30||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -33,10 +33,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:11</publishTime>
     </File>
     <File Include="bin/OnlineShopping.dll">
-      <publishTime>06/28/2026 11:51:45</publishTime>
+      <publishTime>06/30/2026 09:12:12</publishTime>
     </File>
     <File Include="bin/OnlineShopping.pdb">
-      <publishTime>06/28/2026 11:51:45</publishTime>
+      <publishTime>06/30/2026 09:12:12</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/27/2026 12:50:11</publishTime>
@@ -714,13 +714,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:02</publishTime>
     </File>
     <File Include="CSS/stylesheet.css">
-      <publishTime>06/27/2026 19:49:51</publishTime>
+      <publishTime>06/30/2026 01:18:59</publishTime>
     </File>
     <File Include="CSS/sweetalert.css">
       <publishTime>06/27/2026 12:50:02</publishTime>
     </File>
     <File Include="DAL/Online_Shopping.edmx.diagram">
-      <publishTime>06/27/2026 18:20:39</publishTime>
+      <publishTime>06/28/2026 13:40:48</publishTime>
     </File>
     <File Include="EmailTemplates/ForgotPassword.html">
       <publishTime>06/27/2026 12:50:04</publishTime>
@@ -927,7 +927,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:05</publishTime>
     </File>
     <File Include="Images/Log.jpg">
-      <publishTime>06/27/2026 21:43:17</publishTime>
+      <publishTime>06/28/2026 12:07:00</publishTime>
     </File>
     <File Include="Images/log.png">
       <publishTime>06/27/2026 12:50:05</publishTime>
@@ -1119,7 +1119,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:06</publishTime>
     </File>
     <File Include="Scripts/CustomFunction.js">
-      <publishTime>06/27/2026 12:50:06</publishTime>
+      <publishTime>06/29/2026 23:35:46</publishTime>
     </File>
     <File Include="Scripts/datepicker.js">
       <publishTime>06/27/2026 12:50:06</publishTime>
@@ -1956,13 +1956,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
-      <publishTime>06/27/2026 12:50:10</publishTime>
+      <publishTime>06/28/2026 23:38:00</publishTime>
     </File>
     <File Include="Views/Account/ResetPassword.cshtml">
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Views/Admin/Categories.cshtml">
-      <publishTime>06/27/2026 15:50:18</publishTime>
+      <publishTime>06/29/2026 20:58:15</publishTime>
     </File>
     <File Include="Views/Admin/ChangePassword.cshtml">
       <publishTime>06/27/2026 12:50:10</publishTime>
@@ -1992,7 +1992,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Views/Admin/_AdminLayout.cshtml">
-      <publishTime>06/28/2026 11:25:45</publishTime>
+      <publishTime>06/28/2026 12:09:39</publishTime>
     </File>
     <File Include="Views/Admin/_AdminMenu.cshtml">
       <publishTime>06/28/2026 11:23:21</publishTime>
@@ -2004,7 +2004,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>06/27/2026 19:48:10</publishTime>
+      <publishTime>06/30/2026 01:19:42</publishTime>
     </File>
     <File Include="Views/Master/Cities.cshtml">
       <publishTime>06/28/2026 11:38:43</publishTime>
@@ -2013,13 +2013,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/28/2026 11:43:26</publishTime>
     </File>
     <File Include="Views/Search/Index.cshtml">
-      <publishTime>06/27/2026 17:35:42</publishTime>
+      <publishTime>06/30/2026 07:52:28</publishTime>
     </File>
     <File Include="Views/Search/MyCart.cshtml">
       <publishTime>06/27/2026 17:46:32</publishTime>
     </File>
     <File Include="Views/Search/ProductDetail.cshtml">
-      <publishTime>06/27/2026 17:51:34</publishTime>
+      <publishTime>06/30/2026 01:19:56</publishTime>
     </File>
     <File Include="Views/Search/_filterSearch.cshtml">
       <publishTime>06/27/2026 12:50:10</publishTime>
@@ -2031,7 +2031,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Views/Shared/_AdminMenu.cshtml">
-      <publishTime>06/28/2026 11:47:55</publishTime>
+      <publishTime>06/28/2026 12:29:44</publishTime>
     </File>
     <File Include="Views/Shared/_FrontLayout.cshtml">
       <publishTime>06/27/2026 13:11:58</publishTime>
@@ -2040,7 +2040,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Views/Shared/_Login.cshtml">
-      <publishTime>06/27/2026 12:50:10</publishTime>
+      <publishTime>06/28/2026 13:34:03</publishTime>
+    </File>
+    <File Include="Views/Shared/_VendorMenu.cshtml">
+      <publishTime>06/29/2026 22:01:24</publishTime>
     </File>
     <File Include="Views/Shopping/CheckOut.cshtml">
       <publishTime>06/27/2026 19:19:51</publishTime>
@@ -2054,6 +2057,27 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Shopping/_ShippingAddress.cshtml">
       <publishTime>06/27/2026 18:28:05</publishTime>
     </File>
+    <File Include="Views/User/UpdateUser.cshtml">
+      <publishTime>06/28/2026 23:36:29</publishTime>
+    </File>
+    <File Include="Views/User/Users.cshtml">
+      <publishTime>06/28/2026 12:36:41</publishTime>
+    </File>
+    <File Include="Views/Vendor/Dashboard.cshtml">
+      <publishTime>06/30/2026 00:20:27</publishTime>
+    </File>
+    <File Include="Views/Vendor/ProductDetail.cshtml">
+      <publishTime>06/29/2026 21:35:37</publishTime>
+    </File>
+    <File Include="Views/Vendor/Products.cshtml">
+      <publishTime>06/29/2026 23:35:40</publishTime>
+    </File>
+    <File Include="Views/Vendor/UpdateProduct.cshtml">
+      <publishTime>06/29/2026 22:03:45</publishTime>
+    </File>
+    <File Include="Views/Vendor/_VendorLayout.cshtml">
+      <publishTime>06/29/2026 18:47:39</publishTime>
+    </File>
     <File Include="Views/Web.config">
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
@@ -2061,7 +2085,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/27/2026 22:30:25</publishTime>
+      <publishTime>06/28/2026 11:56:15</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -58,7 +58,9 @@ namespace OnlineShopping.Service
                    ProductName = j.ProductName,
                    IsFeatured = j.IsFeatured ?? default(bool),
                    VendorId = j.VendorId,
-                   Pincode = j.Pincode
+                   Pincode = j.Pincode,
+                   DiscountPercent = j.DiscountPercent,
+                   SellingPrice = j.SellingPrice
                }).FirstOrDefault();
             pd = pd != null ? pd : new ProductDetail();
             pd.Categories = new SelectList(_unitOfWork.GetRepositoryInstance<Tbl_Category>().GetAllRecordsIQueryable(), "CategoryId", "CategoryName");
@@ -103,7 +105,8 @@ namespace OnlineShopping.Service
             prod.Price = pd.Price;
             prod.ProductImage = _ProductImage != null ? _ProductImage.FileName : prod.ProductImage;
             prod.ProductName = pd.ProductName;
-
+            prod.SellingPrice = pd.SellingPrice;
+            prod.DiscountPercent = pd.DiscountPercent;
             prod.VendorId = pd.VendorId;
             prod.Pincode = pd.Pincode;
             if (prod.ProductId == 0)
