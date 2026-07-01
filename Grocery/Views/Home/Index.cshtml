@@ -24,7 +24,10 @@
         height: 162px;
         width: 254px;
     }
-
+    .profMid .leftprof {
+        width: 100%;
+        margin-top: 6px;
+    }
 </style>
 <div class="homeSlider">
     <div class="bannerSlider" style="background: url(../images/HomePageBanner1.png) no-repeat center center;">     </div>     <div class="searchOnline clearfix">
@@ -70,7 +73,10 @@
                             <div class="profMid clearfix">
                                 <h2 title="Click to view product detail" style="cursor:pointer;"><a href="/search/productdetail?pId=@featured.ProductId">  @featured.ProductName</a></h2>                                 <div class="leftprof fl">
                                     <text>
-                                        Category @*<a title="Products of this category" style="cursor:pointer;" href="/search?searchkey=@featured.Tbl_Category.CategoryName">@featured.Tbl_Category.pr</a>*@
+                                        Category 
+                                        <a title="Products of this category" 
+                                           style="cursor:pointer;" href="/search?searchkey=
+                                           @featured.CategoryName">@featured.CategoryName</a>
                                     </text>
                                 </div>
                             </div>

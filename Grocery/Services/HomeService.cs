@@ -40,8 +40,8 @@ namespace  Grocery.Services
                     Price = p.Price,
                     ProductImage = p.ProductImage,
                     SellingPrice=p.SellingPrice,
-                    DiscountPercent =p.DiscountPercent
-                    
+                    DiscountPercent =p.DiscountPercent,
+                    CategoryName=p.Tbl_Category.CategoryName
                 }).ToList(),
                 CategoryList = GetActiveCategories().Select(c => new CategoryViewModel
                 {
