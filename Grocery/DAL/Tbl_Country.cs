@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace OnlineShopping.DAL
+namespace Grocery.DAL
 {
 
 using System;

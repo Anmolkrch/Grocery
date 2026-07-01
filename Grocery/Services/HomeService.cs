@@ -1,11 +1,11 @@
-﻿using OnlineShopping.DAL;
-using OnlineShopping.Models;
-using OnlineShopping.Repository;
+﻿using Grocery.DAL;
+using Grocery.Models;
+using Grocery.Repository;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-namespace OnlineShopping.Services
+namespace  Grocery.Services
 {
     public class HomeService
     {
@@ -14,7 +14,6 @@ namespace OnlineShopping.Services
         {
             _unitOfWork = unitOfWork;
         }
-
         public IEnumerable<Tbl_Product> GetFeaturedProducts()
         {
             return _unitOfWork.GetRepositoryInstance<Tbl_Product>()

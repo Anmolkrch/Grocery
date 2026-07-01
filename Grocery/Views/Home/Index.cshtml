@@ -1,10 +1,10 @@
-﻿@model OnlineShopping.Models.HomeProductViewModel
+﻿@model Grocery.Models.HomeProductViewModel
 @{
     ViewBag.Title = "Online Shopping : Home Page";
     Layout = "~/Views/Shared/_FrontLayout.cshtml";
 
-    List<OnlineShopping.DAL.Tbl_Product> FeaturedProducts = (List<OnlineShopping.DAL.Tbl_Product>)ViewBag.FeaturedProducts;
-    List<OnlineShopping.DAL.Tbl_Category> CategoryList = (List<OnlineShopping.DAL.Tbl_Category>)ViewBag.CategoryList;
+    List<Grocery.DAL.Tbl_Product> FeaturedProducts = (List<Grocery.DAL.Tbl_Product>)ViewBag.FeaturedProducts;
+    List<Grocery.DAL.Tbl_Category> CategoryList = (List<Grocery.DAL.Tbl_Category>)ViewBag.CategoryList;
 }
 <style>
     .profPerson .ProfImg {

@@ -1,11 +1,11 @@
 ﻿using Grocery.Filters;
-using OnlineShopping.Models;
-using OnlineShopping.Repository;
-using OnlineShopping.Services;
-using OnlineShopping.Utility;
+using Grocery.Models;
+using Grocery.Repository;
+using Grocery.Services;
+using Grocery.Utility;
 using System;
 using System.Web.Mvc;
-namespace OnlineShopping.Controllers
+namespace  Grocery.Controllers
 {
     [FrontPageActionFilter]
     public class SearchController : Controller

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace OnlineShopping.Repository
+namespace  Grocery.Repository
 {
     public interface IRepository<Tbl_Entity> where Tbl_Entity : class
     {

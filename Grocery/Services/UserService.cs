@@ -1,12 +1,12 @@
-﻿using OnlineShopping.DAL;
-using OnlineShopping.Models;
-using OnlineShopping.Repository;
-using OnlineShopping.Utility;
+﻿using Grocery.DAL;
+using Grocery.Models;
+using Grocery.Repository;
+using Grocery.Utility;
 using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-namespace OnlineShopping.Services
+namespace  Grocery.Services
 {
     public class UserService
     {

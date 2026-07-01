@@ -6,8 +6,8 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Client\PublishSite\OnlineShop</_PublishTargetUrl>
-    <History>True|2026-06-30T14:33:21.0085189Z||;True|2026-06-30T09:16:26.9778435+05:30||;True|2026-06-28T11:51:50.7592084+05:30||;True|2026-06-27T20:47:26.2095658+05:30||;True|2026-06-27T16:27:51.9814722+05:30||;</History>
+    <_PublishTargetUrl>C:\Client\PublishSite\Grocery</_PublishTargetUrl>
+    <History>True|2026-07-01T01:40:03.3589577Z||;True|2026-06-30T20:03:21.0085189+05:30||;True|2026-06-30T09:16:26.9778435+05:30||;True|2026-06-28T11:51:50.7592084+05:30||;True|2026-06-27T20:47:26.2095658+05:30||;True|2026-06-27T16:27:51.9814722+05:30||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -33,10 +33,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:11</publishTime>
     </File>
     <File Include="bin/OnlineShopping.dll">
-      <publishTime>06/30/2026 20:03:11</publishTime>
+      <publishTime>07/01/2026 07:09:54</publishTime>
     </File>
     <File Include="bin/OnlineShopping.pdb">
-      <publishTime>06/30/2026 20:03:11</publishTime>
+      <publishTime>07/01/2026 07:09:54</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/27/2026 12:50:11</publishTime>
@@ -720,7 +720,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:02</publishTime>
     </File>
     <File Include="DAL/Online_Shopping.edmx.diagram">
-      <publishTime>06/28/2026 13:40:48</publishTime>
+      <publishTime>07/01/2026 06:55:16</publishTime>
     </File>
     <File Include="EmailTemplates/ForgotPassword.html">
       <publishTime>06/27/2026 12:50:04</publishTime>
@@ -744,7 +744,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>06/27/2026 22:50:05</publishTime>
+      <publishTime>07/01/2026 07:00:40</publishTime>
     </File>
     <File Include="Images/aboutusBG.jpg">
       <publishTime>06/27/2026 12:50:04</publishTime>
@@ -2046,10 +2046,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/29/2026 22:01:24</publishTime>
     </File>
     <File Include="Views/Shopping/CheckOut.cshtml">
-      <publishTime>06/27/2026 19:19:51</publishTime>
+      <publishTime>07/01/2026 06:56:28</publishTime>
     </File>
     <File Include="Views/Shopping/MyCart.cshtml">
-      <publishTime>06/27/2026 12:50:10</publishTime>
+      <publishTime>07/01/2026 07:06:31</publishTime>
     </File>
     <File Include="Views/Shopping/PaymentSuccess.cshtml">
       <publishTime>06/27/2026 19:44:56</publishTime>

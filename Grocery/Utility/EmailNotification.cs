@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Web;
 
-namespace OnlineShopping.Utility
+namespace  Grocery.Utility
 {
     public class EmailNotification
     {

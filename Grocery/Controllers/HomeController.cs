@@ -1,11 +1,11 @@
 ﻿using Grocery.Filters;
-using OnlineShopping.Repository;
-using OnlineShopping.Services;
-using OnlineShopping.Utility;
+using Grocery.Repository;
+using Grocery.Services;
+using Grocery.Utility;
 using System;
 using System.Web.Mvc;
 
-namespace OnlineShopping.Controllers
+namespace  Grocery.Controllers
 {
     [FrontPageActionFilter]
     public class HomeController : Controller
@@ -19,7 +19,8 @@ namespace OnlineShopping.Controllers
 
         public HomeController()
         {
-            _homeService = new HomeService(new GenericUnitOfWork());
+            // Explicitly specify which constructor to use to resolve ambiguity
+            _homeService = new HomeService(_unitOfWork);
         }
 
         public ActionResult Index()

@@ -1,4 +1,4 @@
-﻿using OnlineShopping.DAL;
+﻿using Grocery.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace OnlineShopping.Repository
+namespace  Grocery.Repository
 {
     // This is used to Isolate the EntityFramework based Data Access Layer from the MVC Controller class
    

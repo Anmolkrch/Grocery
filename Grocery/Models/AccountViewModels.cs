@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OnlineShopping.Models
+namespace  Grocery.Models
 {
     public class LoginViewModel
     {

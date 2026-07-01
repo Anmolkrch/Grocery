@@ -1,14 +1,14 @@
 ﻿using Grocery.Filters;
-using OnlineShopping.DAL;
-using OnlineShopping.Models;
-using OnlineShopping.Repository;
-using OnlineShopping.Services;
-using OnlineShopping.Utility;
+using Grocery.DAL;
+using Grocery.Models;
+using Grocery.Repository;
+using Grocery.Services;
+using Grocery.Utility;
 using System;
 using System.IO;
 using System.Web.Mvc;
 
-namespace OnlineShopping.Controllers
+namespace  Grocery.Controllers
 {
     [FrontPageActionFilter]
     public class AccountController : Controller

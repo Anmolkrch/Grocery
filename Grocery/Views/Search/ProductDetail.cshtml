@@ -1,8 +1,8 @@
-﻿@model OnlineShopping.Models.HomeProductViewModel
-@using OnlineShopping.DAL
+﻿@model Grocery.Models.HomeProductViewModel
+@using Grocery.DAL
 @{ ViewBag.Title = "ProductDetail";
     Layout = "~/Views/Shared/_FrontLayout.cshtml";
-    List<OnlineShopping.Models.ProductViewModel> SimilarProducts = (List<OnlineShopping.Models.ProductViewModel>)ViewBag.SimilarProducts;
+    List<Grocery.Models.ProductViewModel> SimilarProducts = (List<Grocery.Models.ProductViewModel>)ViewBag.SimilarProducts;
 }
 <style>
     .servicesList .servicesBox .servicesImg img {

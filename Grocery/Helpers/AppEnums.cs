@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace OnlineShopping.Helpers
+namespace  Grocery.Helpers
 {
     public class AppEnums
     {

@@ -1,14 +1,14 @@
-﻿using OnlineShopping.DAL;
-using OnlineShopping.Models;
-using OnlineShopping.Repository;
-using OnlineShopping.Utility;
+﻿using Grocery.DAL;
+using Grocery.Models;
+using Grocery.Repository;
+using Grocery.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace OnlineShopping.Service
+namespace  Grocery.Service
 {
     public class ProductService
     {

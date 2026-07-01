@@ -1,4 +1,4 @@
-﻿@model List<OnlineShopping.Models.CityViewModel>
+﻿@model List<Grocery.Models.CityViewModel>
 @{
     ViewBag.Title = "Cities";
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
@@ -11,7 +11,7 @@
     <div class="dashBx">
         <div class="dashboardHD">Cities</div>
         <div id="AddNewPage">
-            <a href="/Admin/AddCity" class="AddNewContent">Add New City</a>
+            <a href="/Master/AddCity" class="AddNewContent">Add New City</a>
         </div>
         @if (Model.Count > 0)
         {

@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace OnlineShopping.Helpers
+namespace  Grocery.Helpers
 {
     public static class SessionHelper
     {

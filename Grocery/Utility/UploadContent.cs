@@ -1,17 +1,13 @@
-﻿using OnlineShopping.DAL;
-using OnlineShopping.Repository;
+﻿using Grocery.Repository;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Helpers;
 
-namespace OnlineShopping.Utility
+namespace  Grocery.Utility
 {
     public class UploadContent
     {

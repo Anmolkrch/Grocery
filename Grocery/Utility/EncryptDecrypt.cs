@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 
-namespace OnlineShopping.Utility
+namespace  Grocery.Utility
 {
     public class EncryptDecrypt
     {

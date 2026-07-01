@@ -1,14 +1,14 @@
 ﻿using Grocery.Filters;
-using OnlineShopping.DAL;
-using OnlineShopping.Models;
-using OnlineShopping.Repository;
+using Grocery.DAL;
+using Grocery.Models;
+using Grocery.Repository;
 using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace OnlineShopping.Controllers
+namespace  Grocery.Controllers
 {
     [AuthorizeUser(Roles = "Admin,SuperAdmin")]
     public class MasterController : Controller
@@ -85,7 +85,7 @@ namespace OnlineShopping.Controllers
             if (cityId != 0)
             {
                 var category = _unitOfWork
-                    .GetRepositoryInstance<OnlineShopping.DAL.Tbl_City>()
+                    .GetRepositoryInstance<Grocery.DAL.Tbl_City>()
                     .GetFirstOrDefault(cityId);
 
                 cd = new CityViewModel
@@ -126,7 +126,6 @@ namespace OnlineShopping.Controllers
                 Tbl_City city = _unitOfWork
                     .GetRepositoryInstance<Tbl_City>()
                     .GetFirstOrDefault(cd.CityId);
-
                 // If not found, create new
                 if (city == null)
                 {
@@ -143,8 +142,14 @@ namespace OnlineShopping.Controllers
                 city.StateId = cd.StateId;
                 city.IsActive = cd.IsActive;
                 city.IsDelete = cd.IsDelete;
-
-                _unitOfWork.GetRepositoryInstance<Tbl_City>().Add(city);
+                if (city.CityId==0)
+                {
+                    _unitOfWork.GetRepositoryInstance<Tbl_City>().Add(city);
+                }
+                else
+                {
+                    _unitOfWork.GetRepositoryInstance<Tbl_City>().Update(city);
+                }
                 // Save changes
                 _unitOfWork.SaveChanges();
 

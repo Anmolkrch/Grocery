@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace OnlineShopping.Models
+namespace  Grocery.Models
 {
     public class HomeProductViewModel
     {

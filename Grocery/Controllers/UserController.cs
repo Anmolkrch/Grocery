@@ -1,13 +1,13 @@
 ﻿using Grocery.Filters;
-using OnlineShopping.DAL;
-using OnlineShopping.Models;
-using OnlineShopping.Repository;
-using OnlineShopping.Utility;
+using Grocery.DAL;
+using Grocery.Models;
+using Grocery.Repository;
+using Grocery.Utility;
 using System;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace OnlineShopping.Content
+namespace  Grocery.Content
 {
     [AuthorizeUser(Roles = "Admin,SuperAdmin")]
     public class UserController : Controller

@@ -1,9 +1,9 @@
 ﻿using Grocery.Filters;
-using OnlineShopping.DAL;
-using OnlineShopping.Models;
-using OnlineShopping.Repository;
-using OnlineShopping.Service;
-using OnlineShopping.Utility;
+using Grocery.DAL;
+using Grocery.Models;
+using Grocery.Repository;
+using Grocery.Service;
+using Grocery.Utility;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace OnlineShopping.Controllers
+namespace  Grocery.Controllers
 {
     [AuthorizeUser(Roles = "Admin,SuperAdmin,Vendor")]
     public class AdminController : Controller
@@ -174,7 +174,7 @@ namespace OnlineShopping.Controllers
         #region Manage Categories ...
         public ActionResult Categories()
         {
-            List<OnlineShopping.DAL.Tbl_Category> AllCategories = _unitOfWork.GetRepositoryInstance<OnlineShopping.DAL.Tbl_Category>().GetAllRecordsIQueryable().Where(i => i.IsDelete == false).ToList();
+            List<Grocery.DAL.Tbl_Category> AllCategories = _unitOfWork.GetRepositoryInstance<Grocery.DAL.Tbl_Category>().GetAllRecordsIQueryable().Where(i => i.IsDelete == false).ToList();
             return View(AllCategories);
         }
 
@@ -198,7 +198,7 @@ namespace OnlineShopping.Controllers
             if (categoryId != 0)
             {
                 var category = _unitOfWork
-                    .GetRepositoryInstance<OnlineShopping.DAL.Tbl_Category>()
+                    .GetRepositoryInstance<Grocery.DAL.Tbl_Category>()
                     .GetFirstOrDefault(categoryId);
 
                 cd = new CategoryDetail
@@ -284,7 +284,7 @@ namespace OnlineShopping.Controllers
             int CategoryId = 0;
             if (HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["categoryId"] != null)
                 CategoryId = Convert.ToInt32(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["categoryId"]);
-            var CategoryExist = _unitOfWork.GetRepositoryInstance<OnlineShopping.DAL.Tbl_Category>().GetAllRecordsIQueryable().Where(i => i.CategoryName == CategoryName && i.CategoryId != CategoryId && i.IsActive == true && i.IsDelete == false).Count();
+            var CategoryExist = _unitOfWork.GetRepositoryInstance<Grocery.DAL.Tbl_Category>().GetAllRecordsIQueryable().Where(i => i.CategoryName == CategoryName && i.CategoryId != CategoryId && i.IsActive == true && i.IsDelete == false).Count();
             return CategoryExist == 0 ? Json(true, JsonRequestBehavior.AllowGet) : Json(false, JsonRequestBehavior.AllowGet);
         }
         #endregion
@@ -356,7 +356,7 @@ namespace OnlineShopping.Controllers
             int productId = 0;
             if (HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["productId"] != null)
                 productId = Convert.ToInt32(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["productId"]);
-            var productExist = _unitOfWork.GetRepositoryInstance<OnlineShopping.DAL.Tbl_Product>()
+            var productExist = _unitOfWork.GetRepositoryInstance<Grocery.DAL.Tbl_Product>()
                 .GetAllRecordsIQueryable().Where(i => i.ProductName == ProductName && i.ProductId 
                 != productId && i.IsActive == true && i.IsDelete == false).Count();
 

@@ -1,16 +1,16 @@
 ﻿using Grocery.Filters;
-using OnlineShopping.DAL;
-using OnlineShopping.Helpers;
-using OnlineShopping.Models;
-using OnlineShopping.Repository;
-using OnlineShopping.Service;
-using OnlineShopping.Utility;
+using Grocery.DAL;
+using Grocery.Helpers;
+using Grocery.Models;
+using Grocery.Repository;
+using Grocery.Service;
+using Grocery.Utility;
 using System;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace OnlineShopping.Controllers
+namespace  Grocery.Controllers
 {
     [AuthorizeUser(Roles = "Vendor")]
     public class VendorController : Controller
@@ -115,7 +115,7 @@ namespace OnlineShopping.Controllers
             int productId = 0;
             if (HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["productId"] != null)
                 productId = Convert.ToInt32(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["productId"]);
-            var productExist = _unitOfWork.GetRepositoryInstance<OnlineShopping.DAL.Tbl_Product>()
+            var productExist = _unitOfWork.GetRepositoryInstance<Grocery.DAL.Tbl_Product>()
                 .GetAllRecordsIQueryable().Where(i => i.ProductName == ProductName && i.ProductId
                 != productId && i.IsActive == true && i.IsDelete == false).Count();
 

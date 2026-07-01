@@ -1,8 +1,8 @@
 ﻿using Grocery.Filters;
-using OnlineShopping.DAL;
-using OnlineShopping.Models;
-using OnlineShopping.Repository;
-using OnlineShopping.Services;
+using Grocery.DAL;
+using Grocery.Models;
+using Grocery.Repository;
+using Grocery.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace OnlineShopping.Controllers
+namespace  Grocery.Controllers
 {
     [FrontPageActionFilter]
     [AuthorizeUser]

@@ -1,9 +1,9 @@
-﻿using OnlineShopping.DAL;
-using OnlineShopping.Repository;
+﻿using Grocery.DAL;
+using Grocery.Repository;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace OnlineShopping.Service
+namespace  Grocery.Service
 {
     public class CategoryService
     {

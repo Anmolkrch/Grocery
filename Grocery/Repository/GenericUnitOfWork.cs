@@ -1,10 +1,10 @@
-﻿using OnlineShopping.DAL;
+﻿using Grocery.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace OnlineShopping.Repository
+namespace  Grocery.Repository
 {
     
     public class GenericUnitOfWork : IDisposable

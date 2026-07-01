@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 
-namespace OnlineShopping.Models
+namespace  Grocery.Models
 {
     public class MemberDetailViewModel
     {

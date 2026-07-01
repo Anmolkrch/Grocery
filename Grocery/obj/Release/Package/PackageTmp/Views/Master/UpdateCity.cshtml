@@ -1,0 +1,49 @@
+﻿@model OnlineShopping.Models.CityViewModel
+@{
+    ViewBag.Title = "CityDetail";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+
+<div class="rightpart">
+    <div class="sechBx clearfix">
+        <div class="bretcrum"><a href="#">Dashboard</a>&nbsp; » <span>Form</span></div>
+    </div>
+    <div class="dashBx">
+        @using (Html.BeginForm("UpdateCity", "Master", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="dashboardHD">
+                @(Request.Url.ToString().ToLower().Contains("addcity") ? "Add City" : "Update City")
+            </div>
+            <div class="dashformBx dashformBx2 clearfix">
+                @Html.HiddenFor(m => m.CityId)
+                <div class="dashfrm-L">
+                    <label class="lblTxt">State*</label>
+                    @Html.DropDownListFor(m => m.StateId, Model.States, "-- Select State --", new { @class = "dashInp" })
+                    @Html.ValidationMessageFor(m => m.StateId)
+                </div>
+                <div class="dashfrm-L">
+                    <label class="lblTxt">City Name*</label>
+                    @Html.TextBoxFor(m => m.CityName, new { @class = "dashInp", @onkeypress = "return OnlyLegalCharacters();" })
+                    @Html.ValidationMessageFor(m => m.CityName)
+                </div>
+
+                <div class="dashfrm-L">
+                    <label class="lblTxt">Active</label>
+                    @Html.CheckBoxFor(m => m.IsActive)
+                </div>
+
+                <div class="dashfrm-L">
+                    <label class="lblTxt">Deleted</label>
+                    @Html.CheckBoxFor(m => m.IsDelete)
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="dashfrm-L submitBtns">
+                    <a onclick="window.history.back();" class="editBtn cancelBtn" style="width: 48%;">Cancel</a>
+                    <input type="submit" value="Submit" onclick="return CheckValidInput(this);" class="editBtn" style="width: 48%;" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

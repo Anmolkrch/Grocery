@@ -9,3 +9,5 @@
 /packages/*/tools/
 *.exe
 *.ps1
+/Grocery/bin
+/Grocery/obj

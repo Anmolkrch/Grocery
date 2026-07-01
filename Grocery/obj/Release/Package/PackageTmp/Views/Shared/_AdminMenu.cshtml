@@ -1,0 +1,56 @@
+﻿<style>
+    .subnav {
+        display: none;
+        margin-left: 15px;
+    }
+
+    .naviList li:hover > .subnav {
+        display: block;
+    }
+</style>
+<div class="leftPart">
+    <div class="naviList">
+        <ul>
+            <li>
+                <a href="/admin/dashboard" class="rightArrow">Dashboard <span></span></a>
+            </li>
+            <li>
+                <a href="/User/Users" class="rightArrow">Users <span></span></a>
+                <ul class="subnav">
+                    <li><a href="/User/Users">Manage Users</a></li>
+                    <li><a href="/User/AddUser">Add AddUser</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/admin/categories" class="rightArrow">Categories <span></span></a>
+                <ul class="subnav">
+                    <li><a href="/admin/categories">Manage Category</a></li>
+                    <li><a href="/admin/AddCategory">Add Category</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/admin/products" class="rightArrow">Products <span></span></a>
+                <ul class="subnav">
+                    <li><a href="/admin/products">Manage Product</a></li>
+                    <li><a href="/admin/AddProduct">Add Product</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="/admin/orders" class="rightArrow">Orders <span></span></a>
+            </li>
+            <li>
+                <a href="/master/Cities" class="rightArrow">City <span></span></a>
+                <ul class="subnav">
+                    <li><a href="/master/AddCity">Add City</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:void(0)" class="rightArrow">Manage Setting <span></span></a>
+                <ul class="subnav">
+                    <li><a href="/admin/changepassword">Change Password</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
