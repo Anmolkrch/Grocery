@@ -1,5 +1,5 @@
-﻿using OnlineShopping.DAL;
-using OnlineShopping.Filters;
+﻿using Grocery.Filters;
+using OnlineShopping.DAL;
 using OnlineShopping.Helpers;
 using OnlineShopping.Models;
 using OnlineShopping.Repository;

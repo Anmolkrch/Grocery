@@ -1,0 +1,2 @@
+C:\Client\Grocery\Grocery\Grocery\obj\Debug\Grocery.csproj.AssemblyReference.cache
+C:\Client\Grocery\Grocery\Grocery\obj\Debug\Grocery.csproj.CoreCompileInputs.cache

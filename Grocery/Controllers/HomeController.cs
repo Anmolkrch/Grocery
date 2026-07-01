@@ -1,12 +1,8 @@
-﻿using OnlineShopping.DAL;
-using OnlineShopping.Filters;
+﻿using Grocery.Filters;
 using OnlineShopping.Repository;
-using OnlineShopping.Service;
 using OnlineShopping.Services;
 using OnlineShopping.Utility;
 using System;
-using System.Linq;
-using System.Web.ApplicationServices;
 using System.Web.Mvc;
 
 namespace OnlineShopping.Controllers
