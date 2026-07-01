@@ -36,7 +36,7 @@ namespace  Grocery.Controllers
             ViewBag.searchKey = searchKey;
             HomeProductViewModel homeProductViewModel = new HomeProductViewModel();
             homeProductViewModel.searchResultViewModels = _homeService.GetSearchResult(searchKey);
-            ViewBag.CategoryList = _homeService.GetActiveCategories();
+            //ViewBag.CategoryList = _homeService.GetActiveCategories();
             return View(homeProductViewModel);
         }
 
@@ -50,7 +50,7 @@ namespace  Grocery.Controllers
             HomeProductViewModel homeProductViewModel = new HomeProductViewModel();
             homeProductViewModel = _homeService.GetSimilarProduct(pId);
             ViewBag.SimilarProducts = homeProductViewModel.ProductList;
-            ViewBag.CategoryList = _homeService.GetActiveCategories();
+            //ViewBag.CategoryList = _homeService.GetActiveCategories();
             return View(homeProductViewModel);
         }
         

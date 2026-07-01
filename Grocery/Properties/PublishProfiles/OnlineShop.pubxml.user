@@ -23,6 +23,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
+    <File Include="bin/Grocery.dll">
+      <publishTime>07/01/2026 16:16:01</publishTime>
+    </File>
+    <File Include="bin/Grocery.pdb">
+      <publishTime>07/01/2026 16:16:01</publishTime>
+    </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/27/2026 12:50:11</publishTime>
     </File>
@@ -609,7 +615,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:02</publishTime>
     </File>
     <File Include="CSS/CustomStyleSheet.css">
-      <publishTime>06/27/2026 12:50:02</publishTime>
+      <publishTime>07/01/2026 10:07:13</publishTime>
     </File>
     <File Include="CSS/fonts/AdminLoginFonts.css">
       <publishTime>06/27/2026 12:50:03</publishTime>
@@ -714,7 +720,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:02</publishTime>
     </File>
     <File Include="CSS/stylesheet.css">
-      <publishTime>06/30/2026 12:46:26</publishTime>
+      <publishTime>07/01/2026 10:48:15</publishTime>
     </File>
     <File Include="CSS/sweetalert.css">
       <publishTime>06/27/2026 12:50:02</publishTime>
@@ -1953,16 +1959,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2017 18:10:12</publishTime>
     </File>
     <File Include="Views/Account/ForgotPassword.cshtml">
-      <publishTime>06/27/2026 12:50:10</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
-      <publishTime>06/28/2026 23:38:00</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Account/ResetPassword.cshtml">
-      <publishTime>06/30/2026 12:55:10</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Admin/Categories.cshtml">
-      <publishTime>06/29/2026 20:58:15</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Admin/ChangePassword.cshtml">
       <publishTime>06/27/2026 12:50:10</publishTime>
@@ -1971,25 +1977,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Views/Admin/Index.cshtml">
-      <publishTime>06/27/2026 12:50:10</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Admin/OrderDetail.cshtml">
-      <publishTime>06/27/2026 12:50:10</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Admin/Orders.cshtml">
-      <publishTime>06/27/2026 12:50:10</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Admin/ProductDetail.cshtml">
-      <publishTime>06/27/2026 12:50:10</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Admin/Products.cshtml">
-      <publishTime>06/27/2026 12:50:10</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Admin/UpdateCategory.cshtml">
-      <publishTime>06/27/2026 15:35:54</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Admin/UpdateProduct.cshtml">
-      <publishTime>06/27/2026 12:50:10</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Admin/_AdminLayout.cshtml">
       <publishTime>06/28/2026 12:09:39</publishTime>
@@ -2004,22 +2010,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>06/30/2026 12:19:53</publishTime>
+      <publishTime>07/01/2026 09:33:44</publishTime>
     </File>
     <File Include="Views/Master/Cities.cshtml">
-      <publishTime>06/28/2026 11:38:43</publishTime>
+      <publishTime>07/01/2026 08:20:47</publishTime>
     </File>
     <File Include="Views/Master/UpdateCity.cshtml">
-      <publishTime>06/28/2026 11:43:26</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Search/Index.cshtml">
-      <publishTime>06/30/2026 12:59:11</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Search/MyCart.cshtml">
-      <publishTime>06/27/2026 17:46:32</publishTime>
+      <publishTime>07/01/2026 10:35:30</publishTime>
     </File>
     <File Include="Views/Search/ProductDetail.cshtml">
-      <publishTime>06/30/2026 12:35:25</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Search/_filterSearch.cshtml">
       <publishTime>06/27/2026 12:50:10</publishTime>
@@ -2034,58 +2040,58 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/28/2026 12:29:44</publishTime>
     </File>
     <File Include="Views/Shared/_FrontLayout.cshtml">
-      <publishTime>06/30/2026 13:30:22</publishTime>
+      <publishTime>07/01/2026 09:33:58</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Views/Shared/_Login.cshtml">
-      <publishTime>06/28/2026 13:34:03</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Shared/_VendorMenu.cshtml">
-      <publishTime>06/29/2026 22:01:24</publishTime>
+      <publishTime>07/01/2026 08:23:56</publishTime>
     </File>
     <File Include="Views/Shopping/CheckOut.cshtml">
-      <publishTime>07/01/2026 06:56:28</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Shopping/MyCart.cshtml">
-      <publishTime>07/01/2026 07:06:31</publishTime>
+      <publishTime>07/01/2026 11:06:03</publishTime>
     </File>
     <File Include="Views/Shopping/PaymentSuccess.cshtml">
-      <publishTime>06/27/2026 19:44:56</publishTime>
+      <publishTime>07/01/2026 07:27:25</publishTime>
     </File>
     <File Include="Views/Shopping/_ShippingAddress.cshtml">
-      <publishTime>06/27/2026 18:28:05</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/User/UpdateUser.cshtml">
-      <publishTime>06/28/2026 23:36:29</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/User/Users.cshtml">
-      <publishTime>06/28/2026 12:36:41</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Vendor/Dashboard.cshtml">
       <publishTime>06/30/2026 00:20:27</publishTime>
     </File>
     <File Include="Views/Vendor/ProductDetail.cshtml">
-      <publishTime>06/29/2026 21:35:37</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Vendor/Products.cshtml">
-      <publishTime>06/29/2026 23:35:40</publishTime>
+      <publishTime>07/01/2026 07:17:04</publishTime>
     </File>
     <File Include="Views/Vendor/UpdateProduct.cshtml">
-      <publishTime>06/30/2026 12:42:01</publishTime>
+      <publishTime>07/01/2026 07:17:03</publishTime>
     </File>
     <File Include="Views/Vendor/_VendorLayout.cshtml">
       <publishTime>06/29/2026 18:47:39</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>06/27/2026 12:50:10</publishTime>
+      <publishTime>07/01/2026 07:22:16</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>06/27/2026 12:50:10</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/30/2026 13:54:08</publishTime>
+      <publishTime>07/01/2026 16:15:22</publishTime>
     </File>
   </ItemGroup>
 </Project>

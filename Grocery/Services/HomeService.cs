@@ -1,10 +1,13 @@
 ﻿using Grocery.DAL;
 using Grocery.Models;
 using Grocery.Repository;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Web;
+using System.Web.Caching;
 namespace  Grocery.Services
 {
     public class HomeService
@@ -101,5 +104,25 @@ namespace  Grocery.Services
             homeProductViewModel.Product = model;
             return homeProductViewModel;
         }
+        public static class CategoryCache
+        {
+            public static List<Tbl_Category> GetCategories(GenericUnitOfWork unitOfWork)
+            {
+                var cacheKey = "Categories";
+                var categories = HttpRuntime.Cache[cacheKey] as List<Tbl_Category>;
+
+                if (categories == null)
+                {
+                    categories = unitOfWork.GetRepositoryInstance<Tbl_Category>()
+                        .GetListByParameter(i => i.IsActive==true && !i.IsDelete == true).ToList();
+
+                    HttpRuntime.Cache.Insert(cacheKey, categories, null,
+                        DateTime.Now.AddHours(1), Cache.NoSlidingExpiration);
+                }
+
+                return categories;
+            }
+        }
+
     }
 }

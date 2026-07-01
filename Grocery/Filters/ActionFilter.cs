@@ -1,6 +1,7 @@
 ﻿using Grocery.Repository;
 using System;
 using System.Web.Mvc;
+using static Grocery.Services.HomeService;
 
 namespace Grocery.Filters
 {
@@ -74,15 +75,18 @@ namespace Grocery.Filters
                 var controller = filterContext.Controller as Controller;
                 if (controller != null)
                 {
-                    if (controller.ViewBag.FeaturedProducts == null)
-                    {
-                        controller.ViewBag.FeaturedProducts = null;
-                    }
+                    //if (controller.ViewBag.FeaturedProducts == null)
+                    //{
+                    //    controller.ViewBag.FeaturedProducts = null;
+                    //}
 
-                    if (controller.ViewBag.CategoryList == null)
-                    {
-                        controller.ViewBag.CategoryList = null;
-                    }
+                    //if (controller.ViewBag.CategoryList == null)
+                    //{
+                    //    controller.ViewBag.CategoryList = null;
+                    //}
+                    var categories = CategoryCache.GetCategories(_unitOfWork);
+                    controller.ViewBag.CategoryList = categories;
+                    base.OnActionExecuting(filterContext);
                 }
             }
             catch (Exception)

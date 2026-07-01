@@ -33,6 +33,8 @@ public partial class USP_MemberShoppingCartDetails_Result
 
     public Nullable<decimal> DiscountPercent { get; set; }
 
+    public string Description { get; set; }
+
 }
 
 }

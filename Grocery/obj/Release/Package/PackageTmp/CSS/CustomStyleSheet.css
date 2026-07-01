@@ -13,7 +13,10 @@
     height: 128px;
 }
 
-span.Dmsg, span.Dcity, span.Dbooking, span.ratePer {
+span.Dmsg,
+span.Dcity,
+span.Dbooking,
+span.ratePer {
     margin: 0 19px !important;
 }
 
@@ -34,6 +37,7 @@ span.Dmsg, span.Dcity, span.Dbooking, span.ratePer {
     width: 100% !important;
     font-style: normal !important;
 }
+
 /*.profilepicImg img {height:68px;width:68px;
 }*/
 
@@ -250,16 +254,19 @@ footer.dashboradfooter {
     margin: 5px;
 }
 
--state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
     border: 1px solid #aaaaaa;
-    background: darkgray;   
+    background: darkgray;
     color: #666;
 }
-    .ui-datepicker-today a {
-        width: 25px;
-        height: 25px;
-        color: #fff;
-    }
+
+.ui-datepicker-today a {
+    width: 25px;
+    height: 25px;
+    color: #fff;
+}
 
 .ui-state-default2 {
     width: 25px;
@@ -402,7 +409,9 @@ footer.dashboradfooter {
     height: 505px;
 }
 
-#EventSchedularBox .createevntBtn{margin:0 !important;}
+    #EventSchedularBox .createevntBtn {
+        margin: 0 !important;
+    }
 
 #EventDetailsPopup {
     height: 250px;
@@ -425,63 +434,73 @@ footer.dashboradfooter {
     height: 420px;
 }
 
-#ReauthenticateUserPopUp{
+#ReauthenticateUserPopUp {
     height: 200px;
 }
 
 .updateBtn {
     border: none;
 }
-.VerifiedImage img{width:20px !important;}
 
-.dashboardtable td a {color: #005faa;}
+.VerifiedImage img {
+    width: 20px !important;
+}
+
+.dashboardtable td a {
+    color: #005faa;
+}
 
 .disablearrow {
     cursor: not-allowed;
 }
-.passBtn{border:none;cursor:pointer;}
-        .detailLeft {
-            width: 20% !important;
-            position: relative;
-        }
 
-        .detailRight {
-            width: 80%;
-        }
+.passBtn {
+    border: none;
+    cursor: pointer;
+}
 
-        .DservicesImg img {
-            width: 140px;
-        }
+detailLeft {
+    width: 20% !important;
+    position: relative;
+}
 
-        .FilterBox {
-            max-height: 200px;
-            overflow: auto;
-        }
+.detailRight {
+    width: 80%;
+}
 
-        .RemoveCartBtn {
-            background-color: #005faa;
-            color: white;
-            padding: 10px 0;
-            width: 100%;
-            cursor: pointer;
-            max-width: 160px;
-            margin: 22px;
-            display: table;
-            border: 1px solid transparent;
-            text-align: center;
-            text-decoration: none;
-            font-family: 'Open Sans';
-            text-transform: capitalize;
-            position: absolute;
-            right: 0;
-            top: 0;
-        }
+.DservicesImg img {
+    width: 140px;
+}
 
-        .innerDetails {
-            height: auto !important;
-            position: relative;
-        }
+.FilterBox {
+    max-height: 200px;
+    overflow: auto;
+}
 
-        .detailservicesBox {
-            border: none !important;
-        }
+.RemoveCartBtn {
+    background-color: #005faa;
+    color: white;
+    padding: 10px 0;
+    width: 100%;
+    cursor: pointer;
+    max-width: 160px;
+    margin: 22px;
+    display: table;
+    border: 1px solid transparent;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Open Sans';
+    text-transform: capitalize;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.innerDetails {
+    height: auto !important;
+    position: relative;
+}
+
+.detailservicesBox {
+    border: none !important;
+}

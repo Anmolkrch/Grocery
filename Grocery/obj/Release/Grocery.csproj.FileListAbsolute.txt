@@ -1,6 +1,3 @@
-C:\Client\Grocery\Grocery\Grocery\bin\OnlineShopping.dll.config
-C:\Client\Grocery\Grocery\Grocery\bin\OnlineShopping.dll
-C:\Client\Grocery\Grocery\Grocery\bin\OnlineShopping.pdb
 C:\Client\Grocery\Grocery\Grocery\bin\Antlr3.Runtime.dll
 C:\Client\Grocery\Grocery\Grocery\bin\EntityFramework.dll
 C:\Client\Grocery\Grocery\Grocery\bin\EntityFramework.SqlServer.dll
@@ -28,5 +25,8 @@ C:\Client\Grocery\Grocery\Grocery\bin\Newtonsoft.Json.xml
 C:\Client\Grocery\Grocery\Grocery\obj\Release\Grocery.csproj.AssemblyReference.cache
 C:\Client\Grocery\Grocery\Grocery\obj\Release\Grocery.csproj.CoreCompileInputs.cache
 C:\Client\Grocery\Grocery\Grocery\obj\Release\Grocery.csproj.Up2Date
-C:\Client\Grocery\Grocery\Grocery\obj\Release\OnlineShopping.dll
-C:\Client\Grocery\Grocery\Grocery\obj\Release\OnlineShopping.pdb
+C:\Client\Grocery\Grocery\Grocery\bin\Grocery.dll.config
+C:\Client\Grocery\Grocery\Grocery\bin\Grocery.dll
+C:\Client\Grocery\Grocery\Grocery\bin\Grocery.pdb
+C:\Client\Grocery\Grocery\Grocery\obj\Release\Grocery.dll
+C:\Client\Grocery\Grocery\Grocery\obj\Release\Grocery.pdb

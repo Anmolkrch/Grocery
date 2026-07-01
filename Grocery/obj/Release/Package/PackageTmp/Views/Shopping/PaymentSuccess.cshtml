@@ -1,4 +1,4 @@
-﻿@model OnlineShopping.Models.ShippingDetailsViewModel
+﻿@model Grocery.Models.ShippingDetailsViewModel
 @{
     ViewBag.Title = "PaymentSuccess";
     Layout = "~/Views/Shared/_FrontLayout.cshtml";
@@ -19,9 +19,9 @@
                         <tr><td><b>&nbsp;</b></td><td>&nbsp;</td></tr>
                         <tr><td><b>Shipping Details:</b></td><td>&nbsp;</td></tr>
                         <tr><td>Address:</td><td>@Model.AddressLine</td></tr>
-                        <tr><td>City:</td><td>@Model.City </td></tr>
-                        <tr><td>State:</td><td>@Model.State</td></tr>
-                        <tr><td>Country:</td><td>@Model.Country</td></tr>
+                        <tr><td>City:</td><td>@Model.CityName </td></tr>
+                        <tr><td>State:</td><td>@Model.StateName</td></tr>
+                        <tr><td>Country:</td><td>@Model.CountryName</td></tr>
                         <tr><td>Zip Code:</td><td>@Model.ZipCode</td></tr>
                     </table>
                 </div>

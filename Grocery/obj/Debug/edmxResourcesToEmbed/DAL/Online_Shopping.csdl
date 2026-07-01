@@ -197,6 +197,7 @@
     <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="100" />
     <Property Type="Decimal" Name="SellingPrice" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="DiscountPercent" Nullable="true" Precision="5" Scale="2" />
+    <Property Type="String" Name="Description" Nullable="true" />
   </ComplexType>
   <EntityType Name="Tbl_Cart">
     <Key>

@@ -101,6 +101,7 @@
           <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
           <ScalarProperty Name="SellingPrice" ColumnName="SellingPrice" />
           <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

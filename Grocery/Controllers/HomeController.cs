@@ -29,7 +29,7 @@ namespace  Grocery.Controllers
             var result =_homeService.GetProductAndCategoryList();
             //ViewBag.FeaturedProducts = _homeService.GetFeaturedProducts();
             //ViewBag.CategoryList = _homeService.GetActiveCategories();
-            ViewBag.CategoryList = _homeService.GetActiveCategories();
+            //ViewBag.CategoryList = _homeService.GetActiveCategories();
             return View(result);
         }
     }

@@ -92,7 +92,7 @@ namespace  Grocery.Controllers
         {
             RegisterViewModel model = new RegisterViewModel();
             model.UserType = 2;
-            ViewBag.CategoryList = _homeService.GetActiveCategories();
+            //ViewBag.CategoryList = _homeService.GetActiveCategories();
             return View(model);
         }
 

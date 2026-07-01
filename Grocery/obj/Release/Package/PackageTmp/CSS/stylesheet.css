@@ -1323,12 +1323,12 @@ ul.prsonList li {
 
 /****************ServicesList*********************/
 .detailLeft {
-    width: 30%;
+    width: 20%;
     position: relative;
 }
 
 .detailRight {
-    width: 70%;
+    width: 80%;
 }
 
 .innerDetails h1 {
@@ -3955,4 +3955,22 @@ share {
 
 .categoriesList li:hover .subCategories {
     display: block; /* show on hover */
+}
+.cartmrp {
+    text-decoration: line-through;
+    color: #888 !important;
+    font-size: 14px;
+}
+
+.cartselling-price {
+    color: #d32f2f !important;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.cartdiscount {
+    color: #2e7d32 !important;
+    font-size: 14px;
+    font-weight: bold;
 }
