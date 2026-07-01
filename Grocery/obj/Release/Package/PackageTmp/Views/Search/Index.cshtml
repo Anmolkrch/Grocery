@@ -56,9 +56,20 @@
                                                             @item.ProductName
                                                         </a>
                                                         <div class="">
-                                                            <h3>
-                                                                @Html.Raw(item.Description)
-                                                            </h3>
+                                                            <h5>
+                                                                @{
+                                                                    var desc = item.Description ?? string.Empty;
+                                                                    if (desc.Length > 50)
+                                                                    {
+                                                                        @Html.Raw(desc.Substring(0, 12) + "... ")
+                                                                        <a href="@Url.Action("productDetail","search", new { pId = item.ProductId })">Read more</a>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        @Html.Raw(desc)
+                                                                    }
+                                                                }
+                                                            </h5>
                                                         </div>
                                                     </div>
                                                     @*<div class="rate clearfix">

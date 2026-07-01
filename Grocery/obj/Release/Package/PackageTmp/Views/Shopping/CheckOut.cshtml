@@ -28,7 +28,21 @@
                         <br /><br />
                         @foreach (var item in Model.CartItems)
                         {
-                            <h3><a title="View Product Detail" href="/search/ProductDetail?pId=@item.ProductId"> <b> @item.ProductName</b>,  </a> <span>Price : </span><b>@item.SellingPrice</b></h3>
+                            <div class="innerDetails">
+                                <h1><a title="View Product Detail" href="/search/ProductDetail?pId=@item.ProductId">@item.ProductName</a></h1>
+                                <h3>
+                                    Category <a style="cursor:pointer"
+                                                title="Click to View the products of this category"
+                                                href="/search/ProductDetail?pId=@item.ProductId">
+                                        @(item.CategoryName)
+                                    </a>
+                                </h3>
+                                <p>@Html.Raw(item.Description)</p>
+                                <p class="cartmrp"><b>MRP  : </b><b>@item.Price</b></p>
+                                <p class="cartselling-price"><b>SellingPrice : </b><b>@item.SellingPrice</b></p>
+                                <p class="cartdiscount"><b>Discount % : </b><b>@item.DiscountPercent</b></p>
+                                <p><a href="/shopping/removecartitem?productId=@item.ProductId" onclick="show_progress();" class="RemoveCartBtn">Remove from cart</a></p>
+                            </div>
                         }
                     </div>
                 }

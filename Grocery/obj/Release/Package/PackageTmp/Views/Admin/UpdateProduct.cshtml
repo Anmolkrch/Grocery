@@ -25,6 +25,8 @@
             <h3 style="color:red;font-weight:bold"> @TempData["FillRequiredFields"]</h3>
             <div class="dashformBx  dashformBx2 clearfix">
                 @Html.HiddenFor(m => m.ProductId)
+                @Html.HiddenFor(m => m.Pincode)
+                @Html.HiddenFor(m => m.VendorId)
                 <div class="dashfrm-L">
                     <label class="lblTxt">Category Name*</label>
                     @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categories, "Value", "Text", Model.CategoryId), "Select Category", new { @class = "dashInp" })
@@ -36,9 +38,38 @@
                     @Html.ValidationMessageFor(m => m.ProductName)
                 </div>
                 <div class="dashfrm-R">
-                    <label class="lblTxt">Price*</label>
-                    @Html.TextBoxFor(m => m.Price, new { @class = "dashInp", @onkeypress = "return OnlyLegalCharacters();" })
+                    <label class="lblTxt">MRP Price*</label>
+                    @Html.TextBoxFor(m => m.Price, new
+                    {
+                        @class = "dashInp",
+                        @onkeypress = "return OnlyLegalCharacters();",
+                        @onkeyup = "CalculateDiscount();",
+                        @id = "Price"
+                    })
                     @Html.ValidationMessageFor(m => m.Price)
+                </div>
+
+                <div class="dashfrm-L">
+                    <label class="lblTxt">Selling Price*</label>
+                    @Html.TextBoxFor(m => m.SellingPrice, new
+                    {
+                        @class = "dashInp",
+                        @onkeypress = "return OnlyLegalCharacters();",
+                        @onkeyup = "CalculateDiscount();",
+                        @id = "SellingPrice"
+                    })
+                    @Html.ValidationMessageFor(m => m.SellingPrice)
+                </div>
+
+                <div class="dashfrm-M">
+                    <label class="lblTxt">Discount %</label>
+                    @Html.TextBoxFor(m => m.DiscountPercent, new
+                    {
+                        @class = "dashInp",
+                        @readonly = "readonly",
+                        @id = "DiscountPercent"
+                    })
+                    @Html.ValidationMessageFor(m => m.DiscountPercent)
                 </div>
                 <div class="clearfix"></div>
                 <div class="dashfrm">
@@ -66,11 +97,11 @@
                 </div>
                 <div class="clearfix"></div>
                 <div class="dashfrm">
-                    <label class="lblTxt" style="width: 137px;">@Html.CheckBoxFor(m => m.IsActive)   Is Active?</label>                 
+                    <label class="lblTxt" style="width: 137px;">@Html.CheckBoxFor(m => m.IsActive)   Is Active?</label>
                 </div>
-                 <div class="clearfix"></div>
+                <div class="clearfix"></div>
                 <div class="dashfrm">
-                    <label class="lblTxt" style="width: 137px;">@Html.CheckBoxFor(m => m.IsFeatured)   Is Featured Product?</label>                 
+                    <label class="lblTxt" style="width: 137px;">@Html.CheckBoxFor(m => m.IsFeatured)   Is Featured Product?</label>
                 </div>
                 <div class="clearfix"></div>
                 <div class="dashfrm-L submitBtns">
