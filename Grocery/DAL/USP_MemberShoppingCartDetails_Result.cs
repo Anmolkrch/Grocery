@@ -29,6 +29,10 @@ public partial class USP_MemberShoppingCartDetails_Result
 
     public string CategoryName { get; set; }
 
+    public Nullable<decimal> SellingPrice { get; set; }
+
+    public Nullable<decimal> DiscountPercent { get; set; }
+
 }
 
 }

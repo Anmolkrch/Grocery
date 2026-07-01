@@ -11,7 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
 
-namespace OnlineShopping.Filters
+namespace Grocery.Filters
 {
     //public class FrontPageActionFilter : FilterAttribute, IActionFilter
     //{

@@ -28,7 +28,7 @@
                         <br /><br />
                         @foreach (var item in Model.CartItems)
                         {
-                            <h3><a title="View Product Detail" href="/search/ProductDetail?pId=@item.ProductId"> <b> @item.ProductName</b>,  </a> <span>Price : </span><b>@item.Price</b></h3>
+                            <h3><a title="View Product Detail" href="/search/ProductDetail?pId=@item.ProductId"> <b> @item.ProductName</b>,  </a> <span>Price : </span><b>@item.SellingPrice</b></h3>
                         }
                     </div>
                 }
@@ -46,7 +46,7 @@
                 }
                 <br />
                 <br />
-                <h3 style="font-weight: bold;color: brown;"> Total Amount to Pay : @Model.CartItems.Sum(i => i.Price)</h3>
+                <h3 style="font-weight: bold;color: brown;"> Total Amount to Pay : @Model.CartItems.Sum(i => i.SellingPrice)</h3>
                 @Html.Partial("_ShippingAddress", Model.ShippingDetails)
             </div>
         </div>

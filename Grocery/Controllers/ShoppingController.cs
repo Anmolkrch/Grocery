@@ -2,6 +2,7 @@
 using OnlineShopping.Filters;
 using OnlineShopping.Models;
 using OnlineShopping.Repository;
+using OnlineShopping.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,6 +26,12 @@ namespace OnlineShopping.Controllers
             set { _memberId = Convert.ToInt32(Session["MemberId"]); }
         }
         #endregion
+        private readonly HomeService _homeService;
+
+        public ShoppingController()
+        {
+            _homeService = new HomeService(new GenericUnitOfWork());
+        }
 
         /// <summary>
         /// Add Product To Cart
@@ -33,6 +40,7 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         public ActionResult AddProductToCart(int productId)
         {
+            ViewBag.CategoryList = _homeService.GetActiveCategories();
             Tbl_Cart c = new Tbl_Cart();
             c.AddedOn = DateTime.Now;
             c.CartStatusId = 1;
@@ -51,6 +59,7 @@ namespace OnlineShopping.Controllers
         /// <returns>List of cart items</returns>
         public ActionResult MyCart()
         {
+            ViewBag.CategoryList = _homeService.GetActiveCategories();
             List<USP_MemberShoppingCartDetails_Result> cd = 
                 _unitOfWork.GetRepositoryInstance<USP_MemberShoppingCartDetails_Result>()
                 .GetResultBySqlProcedure("USP_MemberShoppingCartDetails @memberId",
@@ -65,6 +74,7 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         public ActionResult RemoveCartItem(int productId)
         {
+            ViewBag.CategoryList = _homeService.GetActiveCategories();
             Tbl_Cart c = _unitOfWork.GetRepositoryInstance<Tbl_Cart>().GetFirstOrDefaultByParameter(i => i.ProductId == productId && i.MemberId == memberId && i.CartStatusId == 1);
             c.CartStatusId = 2;
             c.UpdatedOn = DateTime.Now;
@@ -79,10 +89,11 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         public ActionResult CheckOut()
         {
+            ViewBag.CategoryList = _homeService.GetActiveCategories();
             CheckoutViewModel checkoutViewModel = new CheckoutViewModel();
             List<USP_MemberShoppingCartDetails_Result> cd = _unitOfWork.GetRepositoryInstance<USP_MemberShoppingCartDetails_Result>().GetResultBySqlProcedure("USP_MemberShoppingCartDetails @memberId",
                new SqlParameter("memberId", System.Data.SqlDbType.Int) { Value = memberId }).ToList();
-            ViewBag.TotalPrice = cd.Sum(i => i.Price);
+            ViewBag.TotalPrice = cd.Sum(i => i.SellingPrice);
             ViewBag.CartIds = string.Join(",", cd.Select(i => i.CartId).ToList());
             checkoutViewModel.ShippingDetails = GetShippingModel();
             checkoutViewModel.CartItems = cd;
@@ -96,6 +107,7 @@ namespace OnlineShopping.Controllers
         /// <returns></returns>
         public ActionResult PaymentSuccess(ShippingDetails shippingDetails)
         {
+            ViewBag.CategoryList = _homeService.GetActiveCategories();
             Tbl_ShippingDetails shd = new Tbl_ShippingDetails();
             shd.MemberId = memberId;
             shd.AddressLine = shippingDetails.Address;
