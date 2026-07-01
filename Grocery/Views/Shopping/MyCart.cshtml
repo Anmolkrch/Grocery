@@ -52,8 +52,24 @@
                                             <div class="detailRight fr">
                                                 <div class="innerDetails">
                                                     <h1><a title="View Product Detail" href="/search/ProductDetail?pId=@item.ProductId">@item.ProductName</a></h1>
-                                                    <h3>Category <a style="cursor:pointer" title="Click to View the products of this category" href="/search/knowbleprofile?pId=@item.ProductId">@(item.ProductName)</a></h3>
-                                                    <p>@item.Description</p>
+                                                    <h3>Category <a style="cursor:pointer" 
+                                                                    title="Click to View the products of this category" 
+                                                                    href="/search/ProductDetail?pId=@item.ProductId">
+                                                        @(item.CategoryName)</a></h3>
+                                                        <p>
+                                                            @{
+                                                                var desc = item.Description ?? string.Empty;
+                                                                if (desc.Length > 250)
+                                                                {
+                                                                    @Html.Raw(desc.Substring(0, 250) + "... ")
+                                                                    <a href="@Url.Action("productDetail","search", new { pId = item.ProductId })">Read more</a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    @Html.Raw(desc)
+                                                                }
+                                                            }
+                                                        </p>
                                                     <p class="cartmrp"><b>MRP  : </b><b>@item.Price</b></p>
                                                     <p class="cartselling-price"><b>SellingPrice : </b><b>@item.SellingPrice</b></p>
                                                     <p class="cartdiscount"><b>Discount % : </b><b>@item.DiscountPercent</b></p>

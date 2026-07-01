@@ -346,7 +346,7 @@
                                             <div class="nameLink">
                                                 <a title="@Resource.ClickToBookService" href="/search/servicedetail?sId=@item.ServiceId&pId=@item.ProviderId">@item.ServiceName</a><span style="float:right" class="OnlineProvider"><img class="@item.ProviderId" src="/images/OfflineProvider.png" title="Offline" /></span>
                                                 <div class="byperson clearfix">
-                                                    <div class="prsonLeft fl"><h3>by <a style="cursor: pointer; color: #005faa" title="@(Resource.ClickToSeeProviderProfile.Replace("knowble", item.ExposureName))" href="/search/knowbleprofile?pId=@item.ProviderId">@((item.ExposureName != null && item.ExposureName.Length > 12) ? (item.ExposureName.Substring(0, 12) + "...") : item.ExposureName)</a></h3></div>
+                                                    <div class="prsonLeft fl"><h3>by <a style="cursor: pointer; color: #005faa" title="@(Resource.ClickToSeeProviderProfile.Replace("knowble", item.ExposureName))" href="/search/ProductDetail?pId=@item.ProviderId">@((item.ExposureName != null && item.ExposureName.Length > 12) ? (item.ExposureName.Substring(0, 12) + "...") : item.ExposureName)</a></h3></div>
                                                     @*<div class="prsonRight fr" style="visibility: @((item.Rating==null || item.Rating==0)?"hidden":"visible")">
                                                             <img title="Rating" src="/Images/@((item.Rating != null ? item.Rating : 0)+"star").png" />
                                                         </div>*@
@@ -417,7 +417,7 @@
                                     <div class="detailRight fr">
                                         <div class="innerDetails">
                                             <h1><a title="@Resource.ClickToBookService" href="/search/servicedetail?sId=@item.ServiceId&pId=@item.ProviderId">@item.ServiceName</a></h1>
-                                            <h3 style="margin-bottom:0;height:25px;">by <a style="cursor: pointer; color: #005faa; font-size: 13px; " title="@Resource.ClickToSeeProviderProfile" href="/search/knowbleprofile?pId=@item.ProviderId">@(item.ExposureName)</a> I <span title="@item.MemberLanguages" style="color: #848484"> @(item.MemberLanguages.Length > 35 ? item.MemberLanguages.Substring(0, 35) + "..." : item.MemberLanguages)</span> </h3>
+                                            <h3 style="margin-bottom:0;height:25px;">by <a style="cursor: pointer; color: #005faa; font-size: 13px; " title="@Resource.ClickToSeeProviderProfile" href="/search/ProductDetail?pId=@item.ProviderId">@(item.ExposureName)</a> I <span title="@item.MemberLanguages" style="color: #848484"> @(item.MemberLanguages.Length > 35 ? item.MemberLanguages.Substring(0, 35) + "..." : item.MemberLanguages)</span> </h3>
                                             <p>@(item.ShortDescription.Length > 200 ? item.ShortDescription.Substring(0, 200) + "..." : item.ShortDescription)</p>
                                         </div>
                                         <div class="rating">
